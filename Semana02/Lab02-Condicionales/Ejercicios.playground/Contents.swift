@@ -55,6 +55,7 @@ if numero > 0 {
 // Escribe aquí un if/else if/else.
 
 // FIX 1: Temperatura
+print("\n========== EJERCICIO 1: Condicionales if / else / else if ==========")
 
 let temperatura = 35
 
@@ -283,3 +284,86 @@ for _ in 1...3 {
 print(texto)
 
 // PREDICT 7: Imprime "Hola Hola Hola ". El guion bajo se usa porque no necesitamos el contador.
+
+print("\n========== EJERCICIO 4: WHILE Y REPEAT-WHILE ==========")
+
+var contador = 5
+
+while contador > 0 {
+    print("Cuenta regresiva: \(contador)")
+    contador -= 1
+}
+
+print("¡Despegue!")
+
+var ahorro = 0.0
+var meses = 0
+let meta = 2000.0
+let ahorroMensual = 150.0
+
+while ahorro < meta {
+    ahorro += ahorroMensual
+    meses += 1
+}
+
+print("Necesita \(meses) meses para juntar S/. \(meta)")
+print("Monto acumulado: S/. \(ahorro)")
+
+var numeroDivision = 1000.0
+var divisiones = 0
+
+while numeroDivision >= 1 {
+    numeroDivision /= 2
+    divisiones += 1
+    print("División \(divisiones): \(numeroDivision)")
+}
+
+print("Se dividió \(divisiones) veces")
+
+let notaIntento1 = 25
+let notaIntento2 = -3
+let notaIntento3 = 15
+
+var intentoActualNota = notaIntento1
+var notaValida = false
+var numeroDeIntento = 1
+
+repeat {
+    if intentoActualNota >= 0 && intentoActualNota <= 20 {
+        notaValida = true
+        print("Nota \(intentoActualNota) válida en intento \(numeroDeIntento)")
+    } else {
+        print("Nota \(intentoActualNota) inválida, intento \(numeroDeIntento)")
+
+        if numeroDeIntento == 1 {
+            intentoActualNota = notaIntento2
+        } else if numeroDeIntento == 2 {
+            intentoActualNota = notaIntento3
+        }
+
+        numeroDeIntento += 1
+    }
+} while !notaValida
+
+var valorA = 100
+var vueltasA = 0
+
+while valorA > 1 {
+    valorA /= 3
+    vueltasA += 1
+}
+
+print("Valor final de A: \(valorA)")
+print("Vueltas de A: \(vueltasA)")
+
+// PREDICT 8: El valor final es 1 y el while se ejecuta 4 veces.
+
+var valorB = 0
+
+repeat {
+    valorB += 1
+} while valorB < 0
+
+print("Valor final de B: \(valorB)")
+
+// PREDICT 9: El resultado es 1 porque repeat-while siempre ejecuta su contenido al menos una vez.
