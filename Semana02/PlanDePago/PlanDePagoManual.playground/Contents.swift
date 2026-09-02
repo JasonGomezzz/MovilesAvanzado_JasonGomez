@@ -40,3 +40,24 @@ if precioUnitario <= 0 || cantidad <= 0 {
     print("Monto de cuota: S/. \(String(format: "%.2f", montoCuota))")
     print("Monto final: S/. \(String(format: "%.2f", montoFinal))")
 }
+
+if precioUnitario > 0 && cantidad > 0 && planValido {
+    let montoInteres = montoCompra * porcentajeInteres
+    let montoFinal = montoCompra + montoInteres
+    let montoCuota = montoFinal / Double(planCuotas)
+    var saldoPendiente = montoFinal
+
+    print("\nMes\tMonto inicial\tCuota mensual\tResta por pagar")
+
+    for mes in 1...planCuotas {
+        let saldoInicial = saldoPendiente
+        let pago = min(montoCuota, saldoPendiente)
+        saldoPendiente -= pago
+
+        if saldoPendiente < 0.01 {
+            saldoPendiente = 0
+        }
+
+        print("\(mes)\tS/. \(String(format: "%.2f", saldoInicial))\tS/. \(String(format: "%.2f", pago))\tS/. \(String(format: "%.2f", saldoPendiente))")
+    }
+}
