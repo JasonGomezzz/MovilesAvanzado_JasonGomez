@@ -140,3 +140,84 @@ if esLunes && llueve {
 }
 
 // Escribe aquí tu predicción.
+
+// EJERCICIO 2: SWITCH
+
+let notaSwitch = 16
+
+switch notaSwitch {
+case 18...20:
+    print("Calificación: A")
+case 15...17:
+    print("Calificación: B")
+case 13...14:
+    print("Calificación: C")
+case 11...12:
+    print("Calificación: D")
+case 0...10:
+    print("Calificación: F")
+default:
+    print("Nota inválida")
+}
+
+let num1 = 20.0
+let num2 = 5.0
+let operacion = "+"
+
+switch operacion {
+case "+":
+    print("Resultado: \(num1 + num2)")
+case "-":
+    print("Resultado: \(num1 - num2)")
+case "*":
+    print("Resultado: \(num1 * num2)")
+case "/":
+    if num2 != 0 {
+        print("Resultado: \(num1 / num2)")
+    } else {
+        print("No se puede dividir entre cero")
+    }
+default:
+    print("Operación no válida")
+}
+
+let precioProducto = 350.0
+
+switch precioProducto {
+case 0..<100:
+    print("Producto económico")
+case 100..<500:
+    print("Producto medio")
+case 500..<1000:
+    print("Producto premium")
+case 1000...:
+    print("Producto de lujo")
+default:
+    print("Precio inválido")
+}
+
+let mes = 2
+
+switch mes {
+case 1, 3, 5, 7, 8, 10, 12:
+    print("31 días")
+case 4, 6, 9, 11:
+    print("30 días")
+case 2:
+    print("28 o 29 días")
+default:
+    print("Mes inválido")
+}
+
+// PREDICT 4: Imprime "28 o 29 días" porque mes vale 2.
+
+let letra: Character = "a"
+
+switch letra {
+case "a", "e", "i", "o", "u":
+    print("Vocal")
+default:
+    print("Consonante")
+}
+
+// PREDICT 5: Imprime "Vocal" porque la letra "a" coincide con uno de los casos.
