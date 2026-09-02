@@ -87,3 +87,37 @@ let intento5 = 60 // Simula un quinto intento disponible si los anteriores falla
 var numeroIntento = 1 // Lleva la cuenta del intento que se está evaluando.
 var intentoActual = intento1 // Comienza el juego utilizando el primer intento.
 var adivinado = false // Indica que al inicio todavía no se encontró el número secreto.
+while numeroIntento <= 5 && !adivinado { // Repite el proceso mientras haya intentos disponibles.
+    print("Intento \(numeroIntento): \(intentoActual)") // Muestra el intento evaluado.
+
+    if intentoActual == numeroSecreto { // Comprueba si encontró el número secreto.
+        print("¡Correcto!") // Informa que la respuesta es correcta.
+        print("Adivinaste en \(numeroIntento) intentos.") // Muestra cuántos intentos utilizó.
+        adivinado = true // Detiene el juego al marcar el número como adivinado.
+    } else if intentoActual > numeroSecreto { // Comprueba si el valor es mayor al número secreto.
+        print("Muy alto") // Indica que debe intentar con un valor menor.
+    } else { // Se ejecuta cuando el valor es menor al número secreto.
+        print("Muy bajo") // Indica que debe intentar con un valor mayor.
+    } // Finaliza la comparación.
+
+    if !adivinado { // Prepara otro intento solamente si todavía no acertó.
+        numeroIntento += 1 // Avanza al siguiente número de intento.
+
+        switch numeroIntento { // Selecciona el valor que corresponde al siguiente intento.
+        case 2: // Atiende el segundo intento.
+            intentoActual = intento2 // Utiliza el valor del segundo intento.
+        case 3: // Atiende el tercer intento.
+            intentoActual = intento3 // Utiliza el valor del tercer intento.
+        case 4: // Atiende el cuarto intento.
+            intentoActual = intento4 // Utiliza el valor del cuarto intento.
+        case 5: // Atiende el quinto intento.
+            intentoActual = intento5 // Utiliza el valor del quinto intento.
+        default: // Atiende cualquier número fuera de los cinco intentos.
+            break // No realiza ninguna otra modificación.
+        } // Finaliza el switch.
+    } // Finaliza la preparación del siguiente intento.
+} // Finaliza el while.
+
+if !adivinado { // Verifica si agotó los intentos sin acertar.
+    print("Perdiste. El número era: \(numeroSecreto)") // Muestra el número secreto al perder.
+} // Finaliza la validación de derrota.
