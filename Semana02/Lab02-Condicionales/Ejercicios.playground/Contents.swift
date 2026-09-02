@@ -141,6 +141,8 @@ if esLunes && llueve {
 
 // Escribe aquí tu predicción.
 
+print("\n========== EJERCICIO 2: SWITCH ==========")
+
 // EJERCICIO 2: SWITCH
 
 let notaSwitch = 16
@@ -221,3 +223,63 @@ default:
 }
 
 // PREDICT 5: Imprime "Vocal" porque la letra "a" coincide con uno de los casos.
+
+print("\n========== EJERCICIO 3: FOR-IN ==========")
+
+for i in 1...12 {
+    print("7 x \(i) = \(7 * i)")
+}
+
+var suma = 0
+
+for i in 1...100 {
+    suma += i
+}
+
+print("La suma del 1 al 100 es: \(suma)")
+
+var factorial = 1
+
+for i in 1...8 {
+    factorial *= i
+}
+
+print("8! = \(factorial)")
+
+for i in 1...5 {
+    print(String(repeating: "*", count: i))
+}
+
+print("Números pares del 2 al 20:")
+
+for i in 2...20 {
+    if i % 2 == 0 {
+        print(i)
+    }
+}
+
+print("Cuenta regresiva:")
+
+for i in stride(from: 10, through: 1, by: -1) {
+    print(i)
+}
+
+var totalPrediccion = 0
+
+for i in 1...5 {
+    totalPrediccion += i
+}
+
+print(totalPrediccion)
+
+// PREDICT 6: El resultado es 15 y el bucle realiza 5 iteraciones.
+
+var texto = ""
+
+for _ in 1...3 {
+    texto += "Hola "
+}
+
+print(texto)
+
+// PREDICT 7: Imprime "Hola Hola Hola ". El guion bajo se usa porque no necesitamos el contador.
