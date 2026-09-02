@@ -74,3 +74,16 @@ if !datosValidos { // Comprueba si se encontró algún precio o cantidad inváli
     print("TOTAL: S/. \(totalPagar)") // Muestra el monto final que debe pagar el cliente.
     print("Puntos ganados: \(puntosGanados)") // Muestra los puntos de fidelidad obtenidos.
 } // Finaliza el bloque que procesa una compra válida.
+
+print("\n========== JUEGO DE ADIVINANZA ==========") // Imprime el título que separa el juego del ejercicio anterior.
+
+let numeroSecreto = 42 // Define el número fijo que el jugador debe adivinar.
+let intento1 = 20 // Simula el primer número elegido por el jugador.
+let intento2 = 50 // Simula el segundo número elegido por el jugador.
+let intento3 = 35 // Simula el tercer número elegido por el jugador.
+let intento4 = 42 // Simula el cuarto intento, que coincide con el número secreto.
+let intento5 = 60 // Simula un quinto intento disponible si los anteriores fallan.
+
+var numeroIntento = 1 // Lleva la cuenta del intento que se está evaluando.
+var intentoActual = intento1 // Comienza el juego utilizando el primer intento.
+var adivinado = false // Indica que al inicio todavía no se encontró el número secreto.
