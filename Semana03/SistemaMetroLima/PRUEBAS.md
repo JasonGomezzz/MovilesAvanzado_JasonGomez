@@ -2,14 +2,14 @@
 
 Desarrollado por: Jason Gomez
 
-Las pruebas fueron ejecutadas con Swift 6.3.3 el 8 de septiembre de 2026. El proyecto compiló correctamente y el Playground terminó con 23 pruebas correctas y 0 pruebas fallidas.
+Las pruebas fueron ejecutadas con Swift 6.3.3 el 9 de septiembre de 2026. El proyecto compiló correctamente y el Playground terminó con 37 pruebas correctas y 0 pruebas fallidas.
 
 ## Catálogo de estaciones
 
 ### Catálogo general
 
-- Resultado esperado: 53 estaciones únicas.
-- Resultado obtenido: 53 estaciones únicas.
+- Resultado esperado: 103 estaciones únicas después de combinar los intercambios.
+- Resultado obtenido: 103 estaciones únicas.
 - Estado: Correcto.
 
 ### Línea 1
@@ -22,6 +22,24 @@ Las pruebas fueron ejecutadas con Swift 6.3.3 el 8 de septiembre de 2026. El pro
 
 - Resultado esperado: 27 estaciones, con 5 operativas.
 - Resultado obtenido: 27 registros, con 5 operativos y 22 en construcción.
+- Estado: Correcto.
+
+### Línea 3
+
+- Resultado esperado: 28 estaciones referenciales, todas planificadas.
+- Resultado obtenido: 28 registros planificados.
+- Estado: Correcto.
+
+### Línea 4
+
+- Resultado esperado: 8 estaciones del ramal en construcción y 20 estaciones del proyecto principal planificadas.
+- Resultado obtenido: 28 registros; 8 en construcción y 20 planificados.
+- Estado: Correcto.
+
+### Líneas 5 y 6
+
+- Resultado esperado: mostrar sus corredores y no inventar estaciones definitivas.
+- Resultado obtenido: las dos líneas tienen ficha descriptiva y arrays de estaciones vacíos.
 - Estado: Correcto.
 
 ## Búsqueda de estaciones
@@ -88,6 +106,14 @@ Las pruebas fueron ejecutadas con Swift 6.3.3 el 8 de septiembre de 2026. El pro
 - Resultado obtenido: conexión planificada mostrada correctamente.
 - Estado: Correcto.
 
+### Estaciones compartidas
+
+- Cabitos: Línea 1 operativa y Línea 3 planificada.
+- La Cultura: Línea 1 operativa y Línea 4 planificada.
+- Carmen de la Legua: Línea 2 en construcción y Línea 4 en construcción.
+- Resultado obtenido: el diccionario combinó cada nombre sin perder sus estados por línea.
+- Estado: Correcto.
+
 ## Cálculo de rutas
 
 ### Ruta operativa en Línea 1
@@ -122,6 +148,22 @@ Las pruebas fueron ejecutadas con Swift 6.3.3 el 8 de septiembre de 2026. El pro
 - Resultado obtenido: no se generó una ruta.
 - Estado: Correcto.
 
+### Ruta planificada en Línea 3
+
+- Origen: El Álamo.
+- Destino: Naranjal.
+- Resultado esperado: cinco estaciones y una advertencia de infraestructura no operativa.
+- Resultado obtenido: cinco estaciones y advertencia mostrada.
+- Estado: Correcto.
+
+### Ruta ampliada con dos transbordos
+
+- Origen: Museo de Historia Natural.
+- Destino: Aeropuerto.
+- Resultado esperado: llegar al Aeropuerto mediante dos transbordos y advertir que el recorrido no está operativo.
+- Resultado obtenido: destino correcto, dos transbordos y advertencias mostradas.
+- Estado: Correcto.
+
 ## Lugares de interés
 
 ### Museo de la Nación
@@ -141,7 +183,16 @@ Las pruebas fueron ejecutadas con Swift 6.3.3 el 8 de septiembre de 2026. El pro
 ## Validaciones del menú
 
 - Una opción fuera del rango 1 a 7 muestra un mensaje y vuelve al menú.
-- Una línea distinta de 1 o 2 muestra un mensaje de error.
+- Una línea distinta del rango 1 a 6 muestra un mensaje de error.
+- La opción 2 muestra información y estaciones para las líneas 1 a 4.
+- La opción 2 explica la ausencia de un catálogo definitivo para las líneas 5 y 6.
 - Una entrada vacía solicita nuevamente el dato.
 - Una estación inexistente no cierra el programa.
 - La opción 7 finaliza la aplicación correctamente.
+
+## Ejecución final
+
+- Comando de compilación: `swift build`.
+- Resultado: compilación completada sin errores.
+- Aplicación de consola: recorridos del menú ejecutados con entradas simuladas.
+- Playground: 37 pruebas correctas y 0 pruebas fallidas.
