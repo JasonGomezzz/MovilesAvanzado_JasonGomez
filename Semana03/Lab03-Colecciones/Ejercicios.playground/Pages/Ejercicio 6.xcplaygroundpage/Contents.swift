@@ -50,10 +50,10 @@ for numeroAlumno in 1...cantidadAlumnos { // Repite el registro para cada alumno
 var promediosPorAlumno: [String: Double] = [:] // Relaciona cada alumno con el promedio de sus notas.
 var sumaPromedios = 0.0 // Acumula los promedios para calcular el promedio general.
 var cantidadAprobados = 0 // Cuenta los alumnos cuyo promedio es trece o mayor.
-var alumnoNotaMasAlta = "" // Guarda el nombre del alumno con el promedio más alto.
-var promedioMasAlto = -1.0 // Comienza por debajo de cualquier promedio permitido.
-var alumnoNotaMasBaja = "" // Guarda el nombre del alumno con el promedio más bajo.
-var promedioMasBajo = 21.0 // Comienza por encima de cualquier promedio permitido.
+var alumnoNotaMasAlta = "" // Guarda el nombre del alumno que obtuvo la nota individual más alta.
+var notaMasAlta = -1.0 // Comienza por debajo de cualquier nota permitida.
+var alumnoNotaMasBaja = "" // Guarda el nombre del alumno que obtuvo la nota individual más baja.
+var notaMasBaja = 21.0 // Comienza por encima de cualquier nota permitida.
 
 print("\n========== RESULTADOS POR ALUMNO ==========") // Separa el registro del reporte individual.
 
@@ -62,6 +62,14 @@ for nombreAlumno in notasPorAlumno.keys.sorted() { // Recorre los alumnos en ord
     var sumaNotas = 0.0 // Prepara la suma de las notas del alumno.
     for nota in notasAlumno { // Recorre las tres notas almacenadas.
         sumaNotas += nota // Acumula cada nota para obtener el promedio.
+        if nota > notaMasAlta { // Comprueba si se encontró una nueva nota individual máxima.
+            notaMasAlta = nota // Actualiza la nota más alta conocida.
+            alumnoNotaMasAlta = nombreAlumno // Guarda el nombre del alumno que obtuvo la nota más alta.
+        } // Finaliza la actualización de la nota máxima.
+        if nota < notaMasBaja { // Comprueba si se encontró una nueva nota individual mínima.
+            notaMasBaja = nota // Actualiza la nota más baja conocida.
+            alumnoNotaMasBaja = nombreAlumno // Guarda el nombre del alumno que obtuvo la nota más baja.
+        } // Finaliza la actualización de la nota mínima.
     } // Finaliza la suma de notas del alumno.
     let promedioAlumno = sumaNotas / Double(notasAlumno.count) // Divide la suma entre la cantidad de notas.
     promediosPorAlumno[nombreAlumno] = promedioAlumno // Guarda el promedio calculado en el diccionario.
@@ -83,16 +91,6 @@ for nombreAlumno in notasPorAlumno.keys.sorted() { // Recorre los alumnos en ord
         cantidadAprobados += 1 // Incrementa el contador de alumnos aprobados.
     } // Finaliza el conteo de aprobados.
 
-    if promedioAlumno > promedioMasAlto { // Comprueba si se encontró un nuevo promedio máximo.
-        promedioMasAlto = promedioAlumno // Actualiza el promedio más alto conocido.
-        alumnoNotaMasAlta = nombreAlumno // Guarda el nombre asociado al promedio más alto.
-    } // Finaliza la actualización del promedio máximo.
-
-    if promedioAlumno < promedioMasBajo { // Comprueba si se encontró un nuevo promedio mínimo.
-        promedioMasBajo = promedioAlumno // Actualiza el promedio más bajo conocido.
-        alumnoNotaMasBaja = nombreAlumno // Guarda el nombre asociado al promedio más bajo.
-    } // Finaliza la actualización del promedio mínimo.
-
     let promedioFormateado = String(format: "%.2f", promedioAlumno) // Convierte el promedio a un texto con dos decimales.
     print("\(nombreAlumno): promedio \(promedioFormateado) - \(clasificacion)") // Muestra el promedio y la clasificación del alumno.
 } // Finaliza el reporte individual.
@@ -102,8 +100,8 @@ let porcentajeAprobados = Double(cantidadAprobados) / Double(cantidadAlumnos) * 
 
 print("\n========== ESTADÍSTICAS GENERALES ==========") // Muestra el encabezado de las estadísticas.
 print("Promedio general: \(String(format: "%.2f", promedioGeneral))") // Muestra el promedio general con dos decimales.
-print("Promedio más alto: \(alumnoNotaMasAlta) con \(String(format: "%.2f", promedioMasAlto))") // Muestra el alumno con mejor promedio.
-print("Promedio más bajo: \(alumnoNotaMasBaja) con \(String(format: "%.2f", promedioMasBajo))") // Muestra el alumno con menor promedio.
+print("Nota más alta: \(alumnoNotaMasAlta) con \(String(format: "%.2f", notaMasAlta))") // Muestra la calificación individual más alta y quién la obtuvo.
+print("Nota más baja: \(alumnoNotaMasBaja) con \(String(format: "%.2f", notaMasBaja))") // Muestra la calificación individual más baja y quién la obtuvo.
 print("Porcentaje de aprobados: \(String(format: "%.2f", porcentajeAprobados))%") // Muestra el porcentaje de alumnos aprobados.
 
 let alumnosOrdenados = promediosPorAlumno.sorted { $0.value > $1.value } // Ordena los alumnos desde el promedio más alto al más bajo.
