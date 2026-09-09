@@ -28,7 +28,7 @@ private func mostrarMenu() {
     print(tituloSistema.uppercased())
     print(separador)
     print("1. Buscar estación")
-    print("2. Ver estaciones por línea")
+    print("2. Ver información y estaciones por línea")
     print("3. Consultar accesibilidad")
     print("4. Consultar conexiones")
     print("5. Calcular ruta entre estaciones")
@@ -68,16 +68,26 @@ private func ejecutarBusqueda() {
 }
 
 private func ejecutarListadoPorLinea() {
-    guard let entrada = leerTextoNoVacio("Ingrese el número de línea (1 o 2):") else {
+    print("\nLíneas disponibles: 1, 2, 3, 4, 5 y 6")
+
+    guard let entrada = leerTextoNoVacio("Ingrese el número de línea:") else {
         return
     }
 
-    guard let linea = Int(entrada), linea == 1 || linea == 2 else {
-        print("La línea ingresada no es válida. Solo puede elegir 1 o 2.")
+    guard let linea = Int(entrada), let informacion = consultarLinea(linea) else {
+        print("La línea ingresada no es válida. Solo puede elegir del 1 al 6.")
         return
     }
 
-    mostrarEstaciones(estacionesDeLinea(linea), linea: linea)
+    print("\n\(descripcionLinea(informacion))")
+
+    let estaciones = estacionesDeLinea(linea)
+    if estaciones.isEmpty {
+        print("No se listan estaciones porque todavía no existe un catálogo oficial definitivo.")
+        return
+    }
+
+    mostrarEstaciones(estaciones, linea: linea)
 }
 
 private func ejecutarConsultaAccesibilidad() {
@@ -160,7 +170,7 @@ private func ejecutarRecomendacion() {
 }
 
 print(tituloSistema)
-print("Consulte estaciones, conexiones, accesibilidad y rutas.")
+print("Consulte las seis líneas, estaciones, conexiones, accesibilidad y rutas.")
 
 var aplicacionActiva = true
 
