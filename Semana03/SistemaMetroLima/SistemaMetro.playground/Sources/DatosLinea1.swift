@@ -11,6 +11,7 @@ public let estacion28DeJulio = Estacion(
     ubicacion: "Cruce de la avenida 28 de Julio con la avenida Aviación",
     distrito: "La Victoria",
     estado: .enConstruccion,
+    estadosPorLinea: [1: .planificada, 2: .enConstruccion],
     tieneAscensor: true,
     conexiones: [
         Conexion(
