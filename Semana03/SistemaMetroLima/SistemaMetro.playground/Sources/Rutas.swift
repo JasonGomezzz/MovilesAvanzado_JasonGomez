@@ -2,85 +2,191 @@
 
 import Foundation
 
-private func recorridoDeLinea(_ linea: Int) -> [String] {
-    switch linea {
-    case 1:
-        return recorridoLinea1
-    case 2:
-        return recorridoLinea2
-    default:
+private struct EnlaceRuta {
+    let destino: String
+    let linea: Int
+}
+
+private let recorridosPorLinea: [Int: [String]] = [
+    1: recorridoLinea1,
+    2: recorridoLinea2,
+    3: recorridoLinea3,
+    4: recorridoLinea4
+]
+
+private func agregarEnlace(
+    desde origen: String,
+    hasta destino: String,
+    linea: Int,
+    en red: inout [String: [EnlaceRuta]]
+) {
+    let enlaceIda = EnlaceRuta(destino: destino, linea: linea)
+    let enlaceVuelta = EnlaceRuta(destino: origen, linea: linea)
+
+    if red[origen, default: []].contains(where: {
+        $0.destino == destino && $0.linea == linea
+    }) == false {
+        red[origen, default: []].append(enlaceIda)
+    }
+
+    if red[destino, default: []].contains(where: {
+        $0.destino == origen && $0.linea == linea
+    }) == false {
+        red[destino, default: []].append(enlaceVuelta)
+    }
+}
+
+private let redMetro: [String: [EnlaceRuta]] = {
+    var red: [String: [EnlaceRuta]] = [:]
+
+    for linea in recorridosPorLinea.keys.sorted() {
+        guard let recorrido = recorridosPorLinea[linea], recorrido.count > 1 else {
+            continue
+        }
+
+        for posicion in 0..<(recorrido.count - 1) {
+            agregarEnlace(
+                desde: recorrido[posicion],
+                hasta: recorrido[posicion + 1],
+                linea: linea,
+                en: &red
+            )
+        }
+    }
+
+    agregarEnlace(
+        desde: "Gamarra",
+        hasta: "Miguel Grau",
+        linea: 1,
+        en: &red
+    )
+
+    return red
+}()
+
+private func estadoDeEstacion(_ nombre: String, en linea: Int) -> EstadoServicio? {
+    buscarEstacionExacta(nombre: nombre)?.estadosPorLinea[linea]
+}
+
+private func crearTransbordos(
+    estaciones: [String],
+    lineasDeTramos: [Int]
+) -> [String] {
+    guard lineasDeTramos.count > 1 else {
         return []
     }
-}
 
-private func tramo(
-    en recorrido: [String],
-    desde origen: String,
-    hasta destino: String
-) -> [String]? {
-    guard
-        let posicionOrigen = recorrido.firstIndex(of: origen),
-        let posicionDestino = recorrido.firstIndex(of: destino)
-    else {
-        return nil
+    var transbordos: [String] = []
+
+    for posicion in 1..<lineasDeTramos.count {
+        let lineaAnterior = lineasDeTramos[posicion - 1]
+        let lineaSiguiente = lineasDeTramos[posicion]
+
+        if lineaAnterior != lineaSiguiente {
+            transbordos.append(
+                "Cambiar de Línea \(lineaAnterior) a Línea \(lineaSiguiente) en \(estaciones[posicion])."
+            )
+        }
     }
 
-    if posicionOrigen <= posicionDestino {
-        return Array(recorrido[posicionOrigen...posicionDestino])
-    }
-
-    return Array(recorrido[posicionDestino...posicionOrigen].reversed())
-}
-
-private func recorridoParaRutaDirecta(
-    linea: Int,
-    origen: Estacion,
-    destino: Estacion
-) -> [String] {
-    let recorridoCompleto = recorridoDeLinea(linea)
-
-    guard origen.estado == .operativa, destino.estado == .operativa else {
-        return recorridoCompleto
-    }
-
-    return recorridoCompleto.filter { nombre in
-        buscarEstacionExacta(nombre: nombre)?.estado == .operativa
-    }
+    return transbordos
 }
 
 private func crearAdvertencias(
     estaciones: [String],
-    incluyeTransbordoPlanificado: Bool
+    lineasDeTramos: [Int]
 ) -> [String] {
-    var noOperativas: [String] = []
+    var estacionesNoOperativas: [String] = []
 
-    for nombre in estaciones {
-        guard let estacion = buscarEstacionExacta(nombre: nombre) else {
-            continue
-        }
+    if lineasDeTramos.isEmpty, let estacion = estaciones.first,
+       buscarEstacionExacta(nombre: estacion)?.estado != .operativa {
+        estacionesNoOperativas.append(estacion)
+    }
 
-        if estacion.estado != .operativa && !noOperativas.contains(estacion.nombre) {
-            noOperativas.append(estacion.nombre)
+    for posicion in lineasDeTramos.indices {
+        let linea = lineasDeTramos[posicion]
+        let estacionesDelTramo = [estaciones[posicion], estaciones[posicion + 1]]
+
+        for nombre in estacionesDelTramo {
+            if estadoDeEstacion(nombre, en: linea) != .operativa,
+               estacionesNoOperativas.contains(nombre) == false {
+                estacionesNoOperativas.append(nombre)
+            }
         }
     }
 
     var advertencias: [String] = []
 
-    if !noOperativas.isEmpty {
+    if estacionesNoOperativas.isEmpty == false {
         advertencias.append(
-            "La ruta incluye estaciones que todavía no están operativas: "
-                + noOperativas.joined(separator: ", ")
+            "La ruta incluye infraestructura que todavía no está operativa: "
+                + estacionesNoOperativas.joined(separator: ", ")
                 + "."
         )
     }
 
-    if incluyeTransbordoPlanificado {
-        advertencias.append(
-            "El intercambio entre las líneas 1 y 2 en 28 de Julio está planificado y aún no está disponible."
-        )
+    guard lineasDeTramos.count > 1 else {
+        return advertencias
+    }
+
+    for posicion in 1..<lineasDeTramos.count {
+        let lineaAnterior = lineasDeTramos[posicion - 1]
+        let lineaSiguiente = lineasDeTramos[posicion]
+
+        guard lineaAnterior != lineaSiguiente else {
+            continue
+        }
+
+        let nombreIntercambio = estaciones[posicion]
+        let estadoAnterior = estadoDeEstacion(nombreIntercambio, en: lineaAnterior)
+        let estadoSiguiente = estadoDeEstacion(nombreIntercambio, en: lineaSiguiente)
+
+        if estadoAnterior != .operativa || estadoSiguiente != .operativa {
+            advertencias.append(
+                "El intercambio de Línea \(lineaAnterior) a Línea \(lineaSiguiente) "
+                    + "en \(nombreIntercambio) todavía no está disponible."
+            )
+        }
     }
 
     return advertencias
+}
+
+private func reconstruirRuta(
+    origen: String,
+    destino: String,
+    anteriores: [String: (estacion: String, linea: Int)]
+) -> ResultadoRuta? {
+    var estacionesInvertidas = [destino]
+    var lineasInvertidas: [Int] = []
+    var actual = destino
+
+    while actual != origen {
+        guard let pasoAnterior = anteriores[actual] else {
+            return nil
+        }
+
+        lineasInvertidas.append(pasoAnterior.linea)
+        actual = pasoAnterior.estacion
+        estacionesInvertidas.append(actual)
+    }
+
+    let estacionesOrdenadas = Array(estacionesInvertidas.reversed())
+    let lineasOrdenadas = Array(lineasInvertidas.reversed())
+
+    return ResultadoRuta(
+        origen: origen,
+        destino: destino,
+        estaciones: estacionesOrdenadas,
+        transbordos: crearTransbordos(
+            estaciones: estacionesOrdenadas,
+            lineasDeTramos: lineasOrdenadas
+        ),
+        advertencias: crearAdvertencias(
+            estaciones: estacionesOrdenadas,
+            lineasDeTramos: lineasOrdenadas
+        )
+    )
 }
 
 public func calcularRuta(desde origenIngresado: String, hasta destinoIngresado: String) -> ResultadoRuta? {
@@ -98,71 +204,40 @@ public func calcularRuta(desde origenIngresado: String, hasta destinoIngresado: 
             estaciones: [origen.nombre],
             advertencias: crearAdvertencias(
                 estaciones: [origen.nombre],
-                incluyeTransbordoPlanificado: false
+                lineasDeTramos: []
             )
         )
     }
 
-    for linea in origen.lineas {
-        if destino.lineas.contains(linea) {
-            let recorrido = recorridoParaRutaDirecta(
-                linea: linea,
-                origen: origen,
-                destino: destino
-            )
+    var cola = [origen.nombre]
+    var posicionActual = 0
+    var visitadas: Set<String> = [origen.nombre]
+    var anteriores: [String: (estacion: String, linea: Int)] = [:]
 
-            guard let estaciones = tramo(
-                en: recorrido,
-                desde: origen.nombre,
-                hasta: destino.nombre
-            ) else {
-                return nil
+    while posicionActual < cola.count {
+        let estacionActual = cola[posicionActual]
+        posicionActual += 1
+
+        for enlace in redMetro[estacionActual, default: []] {
+            guard visitadas.insert(enlace.destino).inserted else {
+                continue
             }
 
-            return ResultadoRuta(
-                origen: origen.nombre,
-                destino: destino.nombre,
-                estaciones: estaciones,
-                advertencias: crearAdvertencias(
-                    estaciones: estaciones,
-                    incluyeTransbordoPlanificado: false
+            anteriores[enlace.destino] = (estacionActual, enlace.linea)
+
+            if enlace.destino == destino.nombre {
+                return reconstruirRuta(
+                    origen: origen.nombre,
+                    destino: destino.nombre,
+                    anteriores: anteriores
                 )
-            )
+            }
+
+            cola.append(enlace.destino)
         }
     }
 
-    guard
-        let lineaOrigen = origen.lineas.first,
-        let lineaDestino = destino.lineas.first,
-        [lineaOrigen, lineaDestino].allSatisfy({ $0 == 1 || $0 == 2 }),
-        lineaOrigen != lineaDestino,
-        let primerTramo = tramo(
-            en: recorridoDeLinea(lineaOrigen),
-            desde: origen.nombre,
-            hasta: estacion28DeJulio.nombre
-        ),
-        let segundoTramo = tramo(
-            en: recorridoDeLinea(lineaDestino),
-            desde: estacion28DeJulio.nombre,
-            hasta: destino.nombre
-        )
-    else {
-        return nil
-    }
-
-    let estaciones = primerTramo + segundoTramo.dropFirst()
-    let transbordo = "Cambiar de Línea \(lineaOrigen) a Línea \(lineaDestino) en 28 de Julio."
-
-    return ResultadoRuta(
-        origen: origen.nombre,
-        destino: destino.nombre,
-        estaciones: estaciones,
-        transbordos: [transbordo],
-        advertencias: crearAdvertencias(
-            estaciones: estaciones,
-            incluyeTransbordoPlanificado: true
-        )
-    )
+    return nil
 }
 
 public func descripcionRuta(_ ruta: ResultadoRuta) -> String {
