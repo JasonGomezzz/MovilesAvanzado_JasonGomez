@@ -65,19 +65,58 @@ El sistema debe controlar opciones de menú incorrectas, textos vacíos y estaci
 - `SistemaMetro.playground`: contiene los casos de prueba para ejecutar en Xcode.
 - `SistemaMetro.playground/Sources`: contiene los modelos, datos y funciones compartidos.
 
+## Ubicación local en la Mac
+
+La carpeta preparada para abrir y presentar el proyecto es:
+
+```text
+/Users/jason/Dev/MovilesAvanzado_JasonGomez/Semana03/SistemaMetroLima
+```
+
+Esta carpeta está conectada con la rama `sistema-metro`. El Laboratorio 3 permanece separado en `Semana03/Lab03-Colecciones`, por lo que los commits de ambos trabajos no se mezclan.
+
 ## Ejecutar la aplicación en Xcode
 
-1. Abrir Xcode.
-2. Seleccionar `File`, `Open` y elegir la carpeta `SistemaMetroLima`.
+1. Abrir Xcode desde Terminal con el siguiente comando:
+
+```bash
+open -a Xcode "/Users/jason/Dev/MovilesAvanzado_JasonGomez/Semana03/SistemaMetroLima"
+```
+
+2. También se puede seleccionar `File`, `Open` y elegir la carpeta `SistemaMetroLima`.
 3. Esperar que Xcode cargue el archivo `Package.swift`.
 4. Seleccionar el esquema `SistemaMetroLima` y el destino `My Mac`.
 5. Presionar `Command + R`.
 6. Escribir las opciones y los datos solicitados en la consola de Xcode.
 
-También se puede ejecutar desde Terminal:
+## Revisar el proyecto desde Terminal
+
+Ingresar a la ubicación definitiva y comprobar la rama:
 
 ```bash
-cd Semana03/SistemaMetroLima
+cd "/Users/jason/Dev/MovilesAvanzado_JasonGomez/Semana03/SistemaMetroLima"
+pwd
+git status
+git log --oneline -10
+```
+
+Mostrar los requerimientos usando `nano`:
+
+```bash
+nano README.md
+```
+
+Dentro de `nano`, presionar `Control + W`, escribir `Requerimientos funcionales` y presionar `Enter`. Para salir sin modificar el archivo, presionar `Control + X`.
+
+También se puede revisar el menú principal:
+
+```bash
+nano SistemaMetroCLI/main.swift
+```
+
+Después de revisar el código, ejecutar la aplicación:
+
+```bash
 swift run SistemaMetroLima
 ```
 
@@ -99,6 +138,26 @@ Los archivos ubicados en `SistemaMetro.playground/Sources` son compartidos con l
 5. Calcular ruta entre estaciones.
 6. Buscar lugar de interés.
 7. Salir.
+
+## Demostración sugerida para el profesor
+
+La presentación puede realizarse con el siguiente recorrido:
+
+1. Abrir `README.md` con `nano` y mostrar los requerimientos `RF01` a `RF10`.
+2. Ejecutar `swift run SistemaMetroLima`.
+3. Elegir la opción `1` y buscar `miguel grau` para demostrar que la búsqueda ignora mayúsculas y tildes.
+4. Elegir la opción `2`, consultar primero la Línea `1` y después la Línea `2` para mostrar sus estaciones y estados.
+5. Elegir la opción `3` y consultar `Pumacahua` para mostrar su acceso alternativo.
+6. Elegir la opción `4` y consultar `Miguel Grau` para confirmar que no registra una conexión directa.
+7. Repetir la opción `4` con `28 de Julio` para mostrar la conexión planificada entre las líneas 1 y 2.
+8. Elegir la opción `5`, usar `Gamarra` como origen y `Mercado Santa Anita` como destino para mostrar la ruta, el transbordo y las advertencias.
+9. Elegir la opción `6`, usar `Gamarra` como origen y `Estadio Nacional` como lugar para mostrar la recomendación mediante Estación Central y el Metropolitano.
+10. Elegir la opción `7` para cerrar correctamente la aplicación.
+11. Abrir `SistemaMetro.playground` y comprobar el resumen de 23 pruebas correctas y 0 pruebas fallidas.
+
+## Alcance sobre las tarifas
+
+La aplicación no calcula precios ni tarifas de viaje porque esa función no formó parte de los requerimientos originales. Su alcance académico es consultar estaciones, líneas, accesibilidad, conexiones, rutas y lugares de interés. Una consulta de tarifas tendría que desarrollarse posteriormente como un requerimiento adicional basado en información oficial vigente.
 
 ## Fuentes de información
 
