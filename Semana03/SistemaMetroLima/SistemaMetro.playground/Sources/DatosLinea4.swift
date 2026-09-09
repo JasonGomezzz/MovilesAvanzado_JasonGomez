@@ -39,7 +39,7 @@ public let estacionesRamalLinea4: [Estacion] = [
         estado: .enConstruccion,
         conexiones: [
             Conexion(
-                sistema: "Línea 2",
+                sistema: "Líneas 2 y 4",
                 estacion: "Carmen de la Legua",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 4 y 2"
@@ -65,7 +65,7 @@ public let estacionesProyectoPrincipalLinea4: [Estacion] = [
         estado: .planificada,
         conexiones: [
             Conexion(
-                sistema: "Línea 3",
+                sistema: "Líneas 3 y 4",
                 estacion: "Rivera Navarrete",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 4 y 3"
@@ -82,7 +82,7 @@ public let estacionesProyectoPrincipalLinea4: [Estacion] = [
         estado: .planificada,
         conexiones: [
             Conexion(
-                sistema: "Línea 1",
+                sistema: "Líneas 1 y 4",
                 estacion: "La Cultura",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 4 y 1"
@@ -104,7 +104,7 @@ public let estacionesProyectoPrincipalLinea4: [Estacion] = [
         estado: .planificada,
         conexiones: [
             Conexion(
-                sistema: "Línea 2",
+                sistema: "Líneas 2 y 4",
                 estacion: "Mercado Santa Anita",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 4 y 2"

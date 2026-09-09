@@ -42,7 +42,7 @@ public let estacionesRegistradasLinea3: [Estacion] = [
         distrito: "Lima",
         conexiones: [
             Conexion(
-                sistema: "Línea 2 y Metropolitano",
+                sistema: "Líneas 2 y 3, y Metropolitano",
                 estacion: "Estación Central",
                 estado: .planificada,
                 detalle: "Intercambio proyectado con la Línea 2 y el Metropolitano"
@@ -59,7 +59,7 @@ public let estacionesRegistradasLinea3: [Estacion] = [
         distrito: "San Isidro",
         conexiones: [
             Conexion(
-                sistema: "Línea 4",
+                sistema: "Líneas 3 y 4",
                 estacion: "Rivera Navarrete",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 3 y 4"
@@ -79,7 +79,7 @@ public let estacionesRegistradasLinea3: [Estacion] = [
         distrito: "Santiago de Surco",
         conexiones: [
             Conexion(
-                sistema: "Línea 1",
+                sistema: "Líneas 1 y 3",
                 estacion: "Cabitos",
                 estado: .planificada,
                 detalle: "Intercambio proyectado entre las líneas 3 y 1"
