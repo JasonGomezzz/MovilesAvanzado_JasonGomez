@@ -13,6 +13,44 @@ public enum EstadoConexion: String, CaseIterable {
     case planificada = "Planificada"
 }
 
+public enum EstadoLinea: String, CaseIterable {
+    case operativa = "Operativa"
+    case operacionParcial = "Operación parcial"
+    case enConstruccion = "En construcción"
+    case planificada = "Planificada"
+}
+
+public struct LineaMetro {
+    public let numero: Int
+    public let nombre: String
+    public let estado: EstadoLinea
+    public let corredor: String
+    public let distritos: [String]
+    public let horizonte: String?
+    public let tieneCatalogoEstaciones: Bool
+    public let observacion: String
+
+    public init(
+        numero: Int,
+        nombre: String,
+        estado: EstadoLinea,
+        corredor: String,
+        distritos: [String],
+        horizonte: String? = nil,
+        tieneCatalogoEstaciones: Bool,
+        observacion: String
+    ) {
+        self.numero = numero
+        self.nombre = nombre
+        self.estado = estado
+        self.corredor = corredor
+        self.distritos = distritos
+        self.horizonte = horizonte
+        self.tieneCatalogoEstaciones = tieneCatalogoEstaciones
+        self.observacion = observacion
+    }
+}
+
 public struct Conexion {
     public let sistema: String
     public let estacion: String
@@ -39,6 +77,7 @@ public struct Estacion {
     public let ubicacion: String
     public let distrito: String
     public let estado: EstadoServicio
+    public let estadosPorLinea: [Int: EstadoServicio]
     public let tieneAscensor: Bool
     public let accesoAlternativo: String?
     public let conexiones: [Conexion]
@@ -50,6 +89,7 @@ public struct Estacion {
         ubicacion: String,
         distrito: String,
         estado: EstadoServicio,
+        estadosPorLinea: [Int: EstadoServicio]? = nil,
         tieneAscensor: Bool,
         accesoAlternativo: String? = nil,
         conexiones: [Conexion] = []
@@ -60,6 +100,9 @@ public struct Estacion {
         self.ubicacion = ubicacion
         self.distrito = distrito
         self.estado = estado
+        self.estadosPorLinea = estadosPorLinea ?? Dictionary(
+            uniqueKeysWithValues: lineas.map { ($0, estado) }
+        )
         self.tieneAscensor = tieneAscensor
         self.accesoAlternativo = accesoAlternativo
         self.conexiones = conexiones
