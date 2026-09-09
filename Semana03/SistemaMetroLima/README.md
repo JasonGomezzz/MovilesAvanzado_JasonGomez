@@ -65,6 +65,41 @@ El sistema debe controlar opciones de menú incorrectas, textos vacíos y estaci
 - `SistemaMetro.playground`: contiene los casos de prueba para ejecutar en Xcode.
 - `SistemaMetro.playground/Sources`: contiene los modelos, datos y funciones compartidos.
 
+## Ejecutar la aplicación en Xcode
+
+1. Abrir Xcode.
+2. Seleccionar `File`, `Open` y elegir la carpeta `SistemaMetroLima`.
+3. Esperar que Xcode cargue el archivo `Package.swift`.
+4. Seleccionar el esquema `SistemaMetroLima` y el destino `My Mac`.
+5. Presionar `Command + R`.
+6. Escribir las opciones y los datos solicitados en la consola de Xcode.
+
+También se puede ejecutar desde Terminal:
+
+```bash
+cd Semana03/SistemaMetroLima
+swift run SistemaMetroLima
+```
+
+## Ejecutar las pruebas en Playground
+
+1. Abrir `SistemaMetro.playground` con Xcode.
+2. Mostrar la consola con `Shift + Command + Y`.
+3. Presionar el botón para ejecutar el Playground.
+4. Verificar que el resumen indique 23 pruebas correctas y 0 pruebas fallidas.
+
+Los archivos ubicados en `SistemaMetro.playground/Sources` son compartidos con la aplicación de consola. De esta forma, el Playground prueba exactamente los mismos modelos, datos y funciones.
+
+## Opciones del menú
+
+1. Buscar estación.
+2. Ver estaciones por línea.
+3. Consultar accesibilidad.
+4. Consultar conexiones.
+5. Calcular ruta entre estaciones.
+6. Buscar lugar de interés.
+7. Salir.
+
 ## Fuentes de información
 
 Fuentes consultadas el 8 de septiembre de 2026:
@@ -74,3 +109,7 @@ Fuentes consultadas el 8 de septiembre de 2026:
 - [Estaciones de Línea 2](https://www.metrolima2.com/linea-2/)
 - [Conexión de Línea 2 con el Metropolitano](https://www.gob.pe/institucion/atu/noticias/1065334-atu-como-se-conectaran-las-estaciones-centrales-de-la-linea-2-y-el-metropolitano)
 - [Nueva estación de intercambio 28 de Julio](https://www.gob.pe/institucion/atu/noticias/1401829-mtc-renueva-operatividad-e-impulsa-modernizacion-de-linea-1-del-metro-de-lima-y-callao-por-mas-de-uds-3-887-millones)
+
+## Consideración sobre los datos
+
+La aplicación es un ejercicio académico y no reemplaza la información oficial para planificar un viaje real. Los estados de servicio pueden cambiar después de la fecha de consulta indicada.
