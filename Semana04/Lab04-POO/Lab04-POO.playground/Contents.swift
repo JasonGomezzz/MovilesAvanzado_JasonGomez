@@ -137,9 +137,9 @@ class SucursalMall: Sucursal {
 }
 
 class SucursalExpress: Sucursal {
-    let radioKm: Double
+    let radioKm: Int
 
-    init(nombre: String, ciudad: String, radioKm: Double) {
+    init(nombre: String, ciudad: String, radioKm: Int) {
         self.radioKm = radioKm
 
         // FIX: inicializamos las propiedades heredadas mediante el inicializador de Sucursal.
@@ -151,14 +151,14 @@ let sucursalMall = SucursalMall(nombre: "Mall del Sur", ciudad: "Lima")
 let sucursalExpress = SucursalExpress(
     nombre: "Express Miraflores",
     ciudad: "Lima",
-    radioKm: 8.0
+    radioKm: 8
 )
 
 print("===== Correcciones de herencia =====")
 print("Descuento de \(sucursalMall.nombre): \(sucursalMall.descuento())")
 print("Radio de \(sucursalExpress.nombre): \(sucursalExpress.radioKm) km")
 
-let misteriosa: Sucursal = SucursalLima(nombre: "Lima Norte", ciudad: "Lima")
+let misteriosa: Sucursal = SucursalLima(nombre: "Lima Centro", ciudad: "Lima")
 let montoMisterioso = 2000.0 * (1 - misteriosa.descuento())
 
 print("===== Predicciones =====")
