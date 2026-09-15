@@ -90,14 +90,14 @@ class SucursalOnline: Sucursal {
 
 let refrigeradora = Electrodomestico(
     nombre: "Refrigeradora",
-    marca: "Samsung",
+    marca: "Frost",
     precioLista: 2000.0,
     categoria: .lineaBlanca
 )
 
 let licuadora = Electrodomestico(
     nombre: "Licuadora",
-    marca: "Oster",
+    marca: "Mix",
     precioLista: 250.0,
     categoria: .pequenos
 )
@@ -110,22 +110,24 @@ let sucursales: [Sucursal] = [
 
 let productos = [refrigeradora, licuadora]
 
-for producto in productos {
-    print("===== \(producto.nombre) (S/ \(producto.precioLista)) =====")
-
+func cotizar(_ producto: Electrodomestico, en sucursales: [Sucursal]) {
     for sucursal in sucursales {
         sucursal.cotizar(item: producto)
     }
 }
 
-let sucursalOnline = SucursalOnline(nombre: "Tienda Online", ciudad: "Lima")
-let sucursalesConOnline: [Sucursal] = sucursales + [sucursalOnline]
+for producto in productos {
+    print("===== \(producto.nombre) (S/ \(producto.precioLista)) =====")
+    cotizar(producto, en: sucursales)
+}
+
+let sucursalesConOnline: [Sucursal] = sucursales + [SucursalOnline(nombre: "Tienda Online", ciudad: "Lima")]
 
 print("===== Prueba de extensibilidad =====")
-sucursalOnline.cotizar(item: refrigeradora)
+cotizar(refrigeradora, en: sucursalesConOnline)
 print("Sucursales registradas después de la ampliación: \(sucursalesConOnline.count)")
 
-// Se necesitaron seis líneas de código para agregar SucursalOnline y registrarla.
+// Se necesitaron seis líneas: cinco para SucursalOnline y una para sumarla al arreglo.
 
 class SucursalMall: Sucursal {
     // FIX: agregamos override porque descuento() ya existe en la clase Sucursal.
