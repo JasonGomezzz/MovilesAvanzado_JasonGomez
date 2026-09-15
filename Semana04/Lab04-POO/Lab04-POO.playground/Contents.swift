@@ -126,3 +126,42 @@ sucursalOnline.cotizar(item: refrigeradora)
 print("Sucursales registradas después de la ampliación: \(sucursalesConOnline.count)")
 
 // Se necesitaron seis líneas de código para agregar SucursalOnline y registrarla.
+
+class SucursalMall: Sucursal {
+    // FIX: agregamos override porque descuento() ya existe en la clase Sucursal.
+    override func descuento() -> Double {
+        return 0.12
+    }
+}
+
+class SucursalExpress: Sucursal {
+    let radioKm: Double
+
+    init(nombre: String, ciudad: String, radioKm: Double) {
+        self.radioKm = radioKm
+
+        // FIX: inicializamos las propiedades heredadas mediante el inicializador de Sucursal.
+        super.init(nombre: nombre, ciudad: ciudad)
+    }
+}
+
+let sucursalMall = SucursalMall(nombre: "Mall del Sur", ciudad: "Lima")
+let sucursalExpress = SucursalExpress(
+    nombre: "Express Miraflores",
+    ciudad: "Lima",
+    radioKm: 8.0
+)
+
+print("===== Correcciones de herencia =====")
+print("Descuento de \(sucursalMall.nombre): \(sucursalMall.descuento())")
+print("Radio de \(sucursalExpress.nombre): \(sucursalExpress.radioKm) km")
+
+let misteriosa: Sucursal = SucursalLima(nombre: "Lima Norte", ciudad: "Lima")
+let montoMisterioso = 2000.0 * (1 - misteriosa.descuento())
+
+print("===== Predicciones =====")
+print("Predicción 1 - descuento: \(misteriosa.descuento())")
+print("Predicción 2 - envío: \(misteriosa.costoEnvio(monto: montoMisterioso))")
+
+// Se obtiene 0.1 porque Swift ejecuta el método sobrescrito de SucursalLima.
+// Se obtiene 0.0 porque el monto con descuento es S/ 1800 y supera S/ 1500.
