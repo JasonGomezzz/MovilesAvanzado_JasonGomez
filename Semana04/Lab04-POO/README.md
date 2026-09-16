@@ -70,12 +70,18 @@ semana y muestra los estados mediante `switch`.
 
 Con los datos de la guía, el resultado final es S/ 1989.50.
 
+La implementación autónoma, sus 12 requerimientos funcionales y la forma de
+ejecutarla se encuentran en [`Actividad01/README.md`](Actividad01/README.md).
+
 ## Actividad propuesta 02
 
 `Cliente` reúne los datos comunes de una cuenta. `ClienteNatural` agrega nombre
 y DNI, mientras que `ClienteJuridico` agrega razón social, RUC y representante
 legal. Ambos sobrescriben `mostrarDatos()` y se recorren mediante un arreglo
 `[Cliente]`.
+
+La implementación autónoma, sus 12 requerimientos funcionales y la forma de
+ejecutarla se encuentran en [`Actividad02/README.md`](Actividad02/README.md).
 
 ## Ramas de la entrega
 
@@ -102,16 +108,17 @@ También puede comprobarse desde Terminal:
 swift "Semana04/Lab04-POO/Lab04-POO.playground/Contents.swift"
 ```
 
-## Demostración al profesor
+Las actividades propuestas también pueden ejecutarse por separado:
 
-1. Mostrar esta explicación en la rama `manual`.
-2. Ejecutar el Playground y comprobar las seis cotizaciones oficiales.
-3. Señalar el arreglo `[Sucursal]` y el único recorrido que llama a `cotizar`.
-4. Mostrar las correcciones de `override` y `super.init`.
-5. Explicar por qué la variable `misteriosa` ejecuta los métodos de
-   `SucursalLima`.
-6. Mostrar la simulación y el inventario final de la biblioteca.
-7. Comprobar el total S/ 1989.50 de la matrícula.
-8. Mostrar el recorrido polimórfico de los dos tipos de cliente.
-9. Cambiar a `ai-assisted` para enseñar el Caso 2B y `PROMPTS.md`.
-10. Abrir el historial de GitHub para revisar los commits progresivos.
+```bash
+swift "Semana04/Lab04-POO/Actividad01/Actividad01.swift"
+swift "Semana04/Lab04-POO/Actividad02/Actividad02.swift"
+```
+
+## Documentación disponible
+
+- `Actividad01/README.md`: requerimientos funcionales de la matrícula de
+  cursos, datos utilizados, resultado y ejecución con `nano` y `swift`.
+- `Actividad02/README.md`: requerimientos funcionales de los clientes,
+  estructura de clases, datos utilizados y ejecución con `nano` y `swift`.
+- `PRUEBAS.md`: resultados verificados del laboratorio completo.
