@@ -82,21 +82,25 @@ class MatriculaCursos {
     }
 }
 
-let matricula = MatriculaCursos(
-    alumno: AlumnoCursos(nombre: "Juan León", dni: "78965412", esAlumnoTecsup: true)
-)
+func ejecutarActividad01() {
+    let matricula = MatriculaCursos(
+        alumno: AlumnoCursos(nombre: "Juan León", dni: "78965412", esAlumnoTecsup: true)
+    )
 
-matricula.agregar(
-    curso: CursoLibre(nombre: "Swift Avanzado", precio: 450.0),
-    cantidad: 1
-)
-matricula.agregar(
-    curso: CursoLibre(nombre: "IA con Python", precio: 650.0),
-    cantidad: 2
-)
-matricula.agregar(
-    curso: CursoLibre(nombre: "Diseño UX/UI", precio: 500.0),
-    cantidad: 1
-)
+    matricula.agregar(
+        curso: CursoLibre(nombre: "Swift Avanzado", precio: 450.0),
+        cantidad: 1
+    )
+    matricula.agregar(
+        curso: CursoLibre(nombre: "IA con Python", precio: 650.0),
+        cantidad: 2
+    )
+    matricula.agregar(
+        curso: CursoLibre(nombre: "Diseño UX/UI", precio: 500.0),
+        cantidad: 1
+    )
 
-matricula.mostrarComprobante()
+    matricula.mostrarComprobante()
+}
+
+private let inicioActividad01: Void = ejecutarActividad01()
