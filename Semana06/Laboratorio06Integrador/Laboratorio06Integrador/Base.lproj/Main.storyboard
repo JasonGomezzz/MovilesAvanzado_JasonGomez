@@ -89,6 +89,9 @@
                                     <constraint firstAttribute="height" constant="44" id="Uf8-iU-XCr"/>
                                 </constraints>
                                 <state key="normal" title="Ver carrito (0)"/>
+                                <connections>
+                                    <segue destination="Z66-cn-ndY" kind="show" identifier="verCarrito" id="lvr-co-C4Y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="exk-59-dXO"/>
@@ -108,6 +111,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Catálogo" id="pOC-8p-K47"/>
+                    <connections>
+                        <segue destination="3xB-zx-Ekv" kind="show" identifier="verDetalle" id="6RB-bw-dMz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URe-cV-gY8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -376,6 +382,9 @@ S/ 500.00</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Carrito" id="F69-MN-vka"/>
+                    <connections>
+                        <segue destination="SH9-qO-Qct" kind="show" identifier="irDatosCliente" id="Tgb-Wq-5Pn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1PL-j7-wxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -481,6 +490,9 @@ S/ 500.00</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Datos del cliente" id="L56-SY-6gH"/>
+                    <connections>
+                        <segue destination="XQv-fQ-Znq" kind="presentation" identifier="verBoleta" modalPresentationStyle="automatic" id="kBb-j9-MEN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrR-Bj-M4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
