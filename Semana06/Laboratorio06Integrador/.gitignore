@@ -1,0 +1,16 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+.build/
+.swiftpm/
+Pods/
+*.xcarchive
+*.ipa
+
+# Configuración local (se versiona solo el .example)
+Secrets.xcconfig
+
+# macOS
+.DS_Store
