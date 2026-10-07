@@ -430,7 +430,7 @@ S/ 500.00</string>
         <!--Datos del cliente-->
         <scene sceneID="ldW-Qj-Ivj">
             <objects>
-                <viewController id="SH9-qO-Qct" sceneMemberID="viewController">
+                <viewController id="SH9-qO-Qct" customClass="DatosClienteViewController" customModule="Laboratorio06Integrador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NvM-NO-n51">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -510,6 +510,9 @@ S/ 500.00</string>
                                 </constraints>
                                 <state key="normal" title="Confirmar compra"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Confirmar compra"/>
+                                <connections>
+                                    <action selector="confirmarTapped:" destination="SH9-qO-Qct" eventType="touchUpInside" id="ReX-QF-ZKW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UfL-DN-vpJ"/>
@@ -528,6 +531,9 @@ S/ 500.00</string>
                     </view>
                     <navigationItem key="navigationItem" title="Datos del cliente" id="L56-SY-6gH"/>
                     <connections>
+                        <outlet property="apellidosTextField" destination="vzd-gT-eBj" id="dre-VU-Yo4"/>
+                        <outlet property="dniTextField" destination="8QN-Jf-bqL" id="Eft-yH-5fF"/>
+                        <outlet property="nombresTextField" destination="5U7-A1-28Z" id="yhD-FZ-pwm"/>
                         <segue destination="XQv-fQ-Znq" kind="presentation" identifier="verBoleta" modalPresentationStyle="automatic" id="kBb-j9-MEN"/>
                     </connections>
                 </viewController>

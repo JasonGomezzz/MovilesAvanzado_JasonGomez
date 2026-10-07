@@ -50,4 +50,11 @@ class CarritoViewController: UIViewController {
         }
         performSegue(withIdentifier: "irDatosCliente", sender: nil)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "irDatosCliente" {
+            let destino = segue.destination as! DatosClienteViewController
+            destino.carrito = carrito
+        }
+    }
 }
