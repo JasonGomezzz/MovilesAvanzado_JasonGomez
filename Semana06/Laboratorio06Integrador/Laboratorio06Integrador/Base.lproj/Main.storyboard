@@ -29,7 +29,7 @@
         <!--Catálogo-->
         <scene sceneID="DaL-4D-BcN">
             <objects>
-                <viewController id="3hm-hu-kTB" sceneMemberID="viewController">
+                <viewController id="3hm-hu-kTB" customClass="CatalogoViewController" customModule="Laboratorio06Integrador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gll-as-mCg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,9 @@
                                         </constraints>
                                         <state key="normal" title="Refrigeradora · S/ 2000"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Refrigeradora · S/ 2000"/>
+                                        <connections>
+                                            <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="O1b-7J-tsZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRj-dE-tvw">
                                         <rect key="frame" x="0.0" y="62" width="313" height="50"/>
@@ -64,6 +67,9 @@
                                         </constraints>
                                         <state key="normal" title="Licuadora · S/ 250"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Licuadora · S/ 250"/>
+                                        <connections>
+                                            <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="UNj-K4-6Zh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDI-T6-i5a">
                                         <rect key="frame" x="0.0" y="124" width="313" height="50"/>
@@ -72,6 +78,9 @@
                                         </constraints>
                                         <state key="normal" title="Laptop · S/ 3500"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Laptop · S/ 3500"/>
+                                        <connections>
+                                            <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="Vwy-rU-1mD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oD-Th-28r">
                                         <rect key="frame" x="0.0" y="186" width="313" height="50"/>
@@ -80,6 +89,9 @@
                                         </constraints>
                                         <state key="normal" title="Cocina · S/ 1200"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Cocina · S/ 1200"/>
+                                        <connections>
+                                            <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="oh2-1B-lZM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -112,6 +124,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Catálogo" id="pOC-8p-K47"/>
                     <connections>
+                        <outlet property="verCarritoButton" destination="Nxw-DT-nHZ" id="C5n-Dy-ZBJ"/>
                         <segue destination="3xB-zx-Ekv" kind="show" identifier="verDetalle" id="6RB-bw-dMz"/>
                     </connections>
                 </viewController>
@@ -122,7 +135,7 @@
         <!--Detalle-->
         <scene sceneID="ITq-Bl-Qv1">
             <objects>
-                <viewController id="3xB-zx-Ekv" sceneMemberID="viewController">
+                <viewController id="3xB-zx-Ekv" customClass="DetalleViewController" customModule="Laboratorio06Integrador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FuX-D7-3wo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,6 +200,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="muB-cV-YFU">
                                                 <rect key="frame" x="251" y="0.0" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="cantidadCambio:" destination="3xB-zx-Ekv" eventType="valueChanged" id="FWZ-ot-Mwc"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -199,6 +215,9 @@
                                 </constraints>
                                 <state key="normal" title="Agregar al carrito"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Agregar al carrito"/>
+                                <connections>
+                                    <action selector="agregarTapped:" destination="3xB-zx-Ekv" eventType="touchUpInside" id="p6r-Vn-NGq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RaS-aG-RtS"/>
@@ -216,6 +235,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle" id="5j8-fU-oL8"/>
+                    <connections>
+                        <outlet property="cantidadLabel" destination="19p-Uj-cHi" id="7or-xj-K5O"/>
+                        <outlet property="cantidadStepper" destination="muB-cV-YFU" id="xLK-HB-CJo"/>
+                        <outlet property="nombreLabel" destination="Llr-oz-WTD" id="v68-bH-tjf"/>
+                        <outlet property="precioLabel" destination="Tis-B9-7Ry" id="4Qs-tA-JtT"/>
+                        <outlet property="stockLabel" destination="SVM-Ev-ssF" id="9YV-P1-AbC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffg-EF-MKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
