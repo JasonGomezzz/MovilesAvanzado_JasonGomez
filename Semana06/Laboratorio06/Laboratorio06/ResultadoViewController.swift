@@ -20,5 +20,11 @@ class ResultadoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblSubtotal.text = String(format: "S/. %.2f", pVenta.subtotal)
+        self.lblIgv.text = String(format: "S/. %.2f", pVenta.igv)
+        self.lblBase.text = String(format: "S/. %.2f", pVenta.base)
+        self.lblIntereses.text = String(format: "S/. %.2f", pVenta.intereses)
+        self.lblTotal.text = String(format: "S/. %.2f", pVenta.total)
+        self.lblCuota.text = String(format: "S/. %.2f", pVenta.cuota)
     }
 }
