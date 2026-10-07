@@ -535,10 +535,10 @@ S/ 500.00</string>
             </objects>
             <point key="canvasLocation" x="2750" y="700"/>
         </scene>
-        <!--View Controller-->
+        <!--Boleta View Controller-->
         <scene sceneID="hzK-qu-WUc">
             <objects>
-                <viewController id="XQv-fQ-Znq" sceneMemberID="viewController">
+                <viewController id="XQv-fQ-Znq" customClass="BoletaViewController" customModule="Laboratorio06Integrador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="grr-Kh-OQh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,6 +670,9 @@ S/ 500.00</string>
                                 </constraints>
                                 <state key="normal" title="Cerrar"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Cerrar"/>
+                                <connections>
+                                    <action selector="cerrarTapped:" destination="XQv-fQ-Znq" eventType="touchUpInside" id="KNd-Cq-SUL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ct7-ei-g9F"/>
@@ -695,6 +698,16 @@ S/ 500.00</string>
                             <constraint firstItem="5lH-EZ-GV5" firstAttribute="leading" secondItem="ct7-ei-g9F" secondAttribute="leading" constant="24" id="zEi-jj-f6A"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clienteLabel" destination="O5h-rD-vMy" id="mJM-Cb-wL0"/>
+                        <outlet property="descuentoLabel" destination="RBZ-Bm-s1C" id="yhG-de-gau"/>
+                        <outlet property="descuentoTituloLabel" destination="iGb-lU-DcC" id="MNP-sS-ufV"/>
+                        <outlet property="igvLabel" destination="dPd-TS-vNE" id="s4d-gq-WWu"/>
+                        <outlet property="importesLabel" destination="Sx0-Ze-Eix" id="QCi-JB-pfv"/>
+                        <outlet property="lineasLabel" destination="reE-eJ-afC" id="tEh-UJ-TzS"/>
+                        <outlet property="subtotalLabel" destination="Z18-yY-l5W" id="v4O-Js-j8W"/>
+                        <outlet property="totalLabel" destination="YXK-Dm-aTU" id="Jzp-9O-XX9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKv-qr-D2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
