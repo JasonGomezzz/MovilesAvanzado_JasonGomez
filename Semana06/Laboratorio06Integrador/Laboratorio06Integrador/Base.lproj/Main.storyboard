@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-jV-6Fv">
-                                <rect key="frame" x="40" y="231" width="313" height="236"/>
+                                <rect key="frame" x="40" y="231" width="313" height="298"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8G-I9-o5U">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="50"/>
@@ -93,10 +93,21 @@
                                             <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="oh2-1B-lZM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80P-yz-S7Y">
+                                        <rect key="frame" x="0.0" y="248" width="313" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0fz-MA-EAw"/>
+                                        </constraints>
+                                        <state key="normal" title="Microondas · S/ 450"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Microondas · S/ 450"/>
+                                        <connections>
+                                            <action selector="productoTapped:" destination="3hm-hu-kTB" eventType="touchUpInside" id="SXY-JZ-VrI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxw-DT-nHZ">
-                                <rect key="frame" x="148.66666670000001" y="487" width="96" height="44"/>
+                                <rect key="frame" x="148.66666670000001" y="549" width="96" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Uf8-iU-XCr"/>
                                 </constraints>
