@@ -23,3 +23,31 @@ extension UIViewController {
         present(alerta, animated: true)
     }
 }
+
+// Textos del carrito que comparten el Carrito y la Boleta. Los números ya vienen
+// calculados por CarritoModel; aquí solo se arman las cadenas para las etiquetas.
+extension CarritoModel {
+    // Una línea por producto, p. ej. "Refrigeradora x1"
+    func textoDeLineas() -> String {
+        var lineas: [String] = []
+        for item in items {
+            lineas.append("\(item.producto.nombre) x\(item.cantidad)")
+        }
+        return lineas.joined(separator: "\n")
+    }
+
+    // El importe de cada línea, en el mismo orden, para la columna de la derecha
+    func textoDeImportes() -> String {
+        var importes: [String] = []
+        for item in items {
+            importes.append("S/ \(item.subtotal().conDecimales)")
+        }
+        return importes.joined(separator: "\n")
+    }
+
+    // "Descuento (10%)": el porcentaje cambia según el tramo del subtotal
+    func textoDeDescuento() -> String {
+        let porcentaje = Int((porcentajeDescuento() * 100).rounded())
+        return "Descuento (\(porcentaje)%)"
+    }
+}

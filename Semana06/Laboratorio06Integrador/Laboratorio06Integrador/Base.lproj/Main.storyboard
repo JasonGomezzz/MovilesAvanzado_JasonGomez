@@ -250,7 +250,7 @@
         <!--Carrito-->
         <scene sceneID="d81-7c-QS2">
             <objects>
-                <viewController id="Z66-cn-ndY" sceneMemberID="viewController">
+                <viewController id="Z66-cn-ndY" customClass="CarritoViewController" customModule="Laboratorio06Integrador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKV-A1-rwK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,6 +382,9 @@ S/ 500.00</string>
                                 </constraints>
                                 <state key="normal" title="Finalizar compra"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Finalizar compra"/>
+                                <connections>
+                                    <action selector="finalizarTapped:" destination="Z66-cn-ndY" eventType="touchUpInside" id="Kyo-Ei-euO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kR1-U9-zVL"/>
@@ -409,6 +412,14 @@ S/ 500.00</string>
                     </view>
                     <navigationItem key="navigationItem" title="Carrito" id="F69-MN-vka"/>
                     <connections>
+                        <outlet property="categoriaLabel" destination="bcm-JE-5jc" id="0Jz-Rq-e4p"/>
+                        <outlet property="descuentoLabel" destination="GUI-eM-9SX" id="20V-Bm-Qpx"/>
+                        <outlet property="descuentoTituloLabel" destination="CgA-51-TM9" id="EjD-RB-ZEb"/>
+                        <outlet property="igvLabel" destination="tEA-YY-VCP" id="SoM-A6-fsP"/>
+                        <outlet property="importesLabel" destination="MSL-Eo-sMU" id="BDL-k0-FIP"/>
+                        <outlet property="lineasLabel" destination="Ik4-Yp-wzO" id="KeM-zL-RdM"/>
+                        <outlet property="subtotalLabel" destination="09J-af-xzl" id="ALE-GA-ZDP"/>
+                        <outlet property="totalLabel" destination="AcC-Xs-hXb" id="VCW-OW-fcz"/>
                         <segue destination="SH9-qO-Qct" kind="show" identifier="irDatosCliente" id="Tgb-Wq-5Pn"/>
                     </connections>
                 </viewController>

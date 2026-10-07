@@ -37,6 +37,11 @@ class CatalogoViewController: UIViewController {
             destino.producto = productos[boton.tag]  // elige el producto según el tag
             destino.carrito = carrito                // el MISMO objeto, no una copia
         }
+        // B1: el carrito también viaja al Carrito
+        if segue.identifier == "verCarrito" {
+            let destino = segue.destination as! CarritoViewController
+            destino.carrito = carrito
+        }
     }
 
     // B2: se ejecuta cada vez que vuelves a esta pantalla, a diferencia de viewDidLoad
