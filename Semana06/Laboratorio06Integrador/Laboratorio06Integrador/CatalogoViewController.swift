@@ -33,7 +33,7 @@ class CatalogoViewController: UIViewController {
     @IBOutlet weak var verCarritoButton: UIButton!
 
     // Los botones de producto apuntan a esta MISMA acción.
-    // En el Inspector de Atributos, el Tag de cada botón vale 0, 1, 2 y 3,
+    // En el Inspector de Atributos, el Tag de cada botón vale 0, 1, 2, 3 y 4,
     // igual que la posición del producto en el array `productos`.
     @IBAction func productoTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "verDetalle", sender: sender)
