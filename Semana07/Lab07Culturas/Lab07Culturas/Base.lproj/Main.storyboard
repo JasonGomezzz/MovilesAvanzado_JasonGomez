@@ -1,24 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nav-LC-001">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="scn-Nav-001">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="Nav-LC-001" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nbr-LC-002">
+                        <rect key="frame" x="0.0" y="62" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lst-LC-010" kind="relationship" relationship="rootViewController" id="Rel-LC-003"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fr-LC-004" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1017" y="111"/>
+        </scene>
+        <!--Culturas del Perú-->
+        <scene sceneID="scn-Lst-001">
+            <objects>
+                <viewController id="Lst-LC-010" customClass="CulturasViewController" customModule="Lab07Culturas" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vw-LC-011">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tbl-LC-012">
+                                <rect key="frame" x="0.0" y="118" width="393" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="culturaCell" rowHeight="96" id="Cel-LC-013" customClass="CulturaTableViewCell" customModule="Lab07Culturas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cel-LC-013" id="Ctn-LC-014">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Img-LC-015">
+                                                    <rect key="frame" x="16" y="15" width="96" height="66"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="Cw-LC-016"/>
+                                                        <constraint firstAttribute="height" constant="66" id="Ch-LC-017"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Stk-LC-018">
+                                                    <rect key="frame" x="128" y="28" width="218" height="40"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-LC-019">
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="21.666666666666668"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Región" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Reg-LC-020">
+                                                            <rect key="frame" x="0.0" y="25.666666666666671" width="218" height="14.333333333333329"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Img-LC-015" firstAttribute="leading" secondItem="Ctn-LC-014" secondAttribute="leading" constant="16" id="Cl1-LC-021"/>
+                                                <constraint firstItem="Img-LC-015" firstAttribute="centerY" secondItem="Ctn-LC-014" secondAttribute="centerY" id="Cy1-LC-022"/>
+                                                <constraint firstItem="Stk-LC-018" firstAttribute="leading" secondItem="Img-LC-015" secondAttribute="trailing" constant="16" id="Cl2-LC-023"/>
+                                                <constraint firstItem="Stk-LC-018" firstAttribute="centerY" secondItem="Ctn-LC-014" secondAttribute="centerY" id="Cy2-LC-024"/>
+                                                <constraint firstAttribute="trailing" secondItem="Stk-LC-018" secondAttribute="trailing" constant="16" id="Ct2-LC-025"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imagenImageView" destination="Img-LC-015" id="Out-LC-026"/>
+                                            <outlet property="nombreLabel" destination="Nom-LC-019" id="Out-LC-027"/>
+                                            <outlet property="regionLabel" destination="Reg-LC-020" id="Out-LC-028"/>
+                                            <segue destination="Det-LC-040" kind="show" identifier="verCultura" id="Sgu-LC-029"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lst-LC-010" id="Ds-LC-030"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sa-LC-031"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tbl-LC-012" firstAttribute="top" secondItem="Sa-LC-031" secondAttribute="top" id="Tt-LC-032"/>
+                            <constraint firstItem="Tbl-LC-012" firstAttribute="leading" secondItem="Sa-LC-031" secondAttribute="leading" id="Tl-LC-033"/>
+                            <constraint firstItem="Sa-LC-031" firstAttribute="trailing" secondItem="Tbl-LC-012" secondAttribute="trailing" id="Tr-LC-034"/>
+                            <constraint firstItem="Sa-LC-031" firstAttribute="bottom" secondItem="Tbl-LC-012" secondAttribute="bottom" id="Tb-LC-035"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Culturas del Perú" id="Nvi-LC-036"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tbl-LC-012" id="Otv-LC-037"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fr-LC-038" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-130" y="111"/>
+        </scene>
+        <!--Detalle-->
+        <scene sceneID="scn-Det-001">
+            <objects>
+                <viewController id="Det-LC-040" customClass="DetalleCulturaViewController" customModule="Lab07Culturas" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vw-LC-041">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scr-LC-042">
+                                <rect key="frame" x="0.0" y="118" width="393" height="700"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Stk-LC-043">
+                                        <rect key="frame" x="16" y="16" width="361" height="460"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Img-LC-044">
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="240.66666666666666"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Img-LC-044" secondAttribute="height" multiplier="3:2" id="Asp-LC-045"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de la cultura" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-LC-046">
+                                                <rect key="frame" x="0.0" y="252.66666666666669" width="361" height="33.666666666666686"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Región" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Reg-LC-047">
+                                                <rect key="frame" x="0.0" y="298.33333333333331" width="361" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsc-LC-048">
+                                                <rect key="frame" x="0.0" y="330.66666666666669" width="361" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Stk-LC-043" firstAttribute="top" secondItem="Cnt-LC-049" secondAttribute="top" constant="16" id="St1-LC-051"/>
+                                    <constraint firstItem="Stk-LC-043" firstAttribute="leading" secondItem="Cnt-LC-049" secondAttribute="leading" constant="16" id="St2-LC-052"/>
+                                    <constraint firstItem="Cnt-LC-049" firstAttribute="trailing" secondItem="Stk-LC-043" secondAttribute="trailing" constant="16" id="St3-LC-053"/>
+                                    <constraint firstItem="Cnt-LC-049" firstAttribute="bottom" secondItem="Stk-LC-043" secondAttribute="bottom" constant="16" id="St4-LC-054"/>
+                                    <constraint firstItem="Stk-LC-043" firstAttribute="width" secondItem="Frm-LC-050" secondAttribute="width" constant="-32" id="St5-LC-055"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Cnt-LC-049"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Frm-LC-050"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sa-LC-056"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Scr-LC-042" firstAttribute="top" secondItem="Sa-LC-056" secondAttribute="top" id="Sc1-LC-057"/>
+                            <constraint firstItem="Scr-LC-042" firstAttribute="leading" secondItem="Sa-LC-056" secondAttribute="leading" id="Sc2-LC-058"/>
+                            <constraint firstItem="Sa-LC-056" firstAttribute="trailing" secondItem="Scr-LC-042" secondAttribute="trailing" id="Sc3-LC-059"/>
+                            <constraint firstItem="Sa-LC-056" firstAttribute="bottom" secondItem="Scr-LC-042" secondAttribute="bottom" id="Sc4-LC-060"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nvi-LC-061"/>
+                    <connections>
+                        <outlet property="descripcionLabel" destination="Dsc-LC-048" id="Od-LC-062"/>
+                        <outlet property="imagenImageView" destination="Img-LC-044" id="Oi-LC-063"/>
+                        <outlet property="nombreLabel" destination="Nom-LC-046" id="On-LC-064"/>
+                        <outlet property="regionLabel" destination="Reg-LC-047" id="Or-LC-065"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fr-LC-066" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="111"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.26274509803921569" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
