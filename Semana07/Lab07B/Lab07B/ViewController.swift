@@ -32,4 +32,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
+    // Al seleccionar una fila se muestra una alerta con el nombre del docente
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alerta = UIAlertController(title: "El docente que seleccionó es:",
+                                       message: personasArreglo[indexPath.row],
+                                       preferredStyle: .alert)
+        // Botón OK que cierra la alerta
+        alerta.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alerta, animated: true, completion: nil)
+    }
+
 }
