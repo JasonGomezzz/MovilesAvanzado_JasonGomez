@@ -78,4 +78,6 @@ xcodebuild -project Semana07/Lab07B/Lab07B.xcodeproj -scheme Lab07B \
   se escribió *"El docente que seleccionó es:"*.
 - **Avatares distintos.** El enunciado repite `avatar4` y `avatar2` para dos docentes; como se
   descargaron siete imágenes, Elliot Garamendi usa `avatar6` y Edwin Huerto `avatar7`.
+- **Avatares según el nombre.** Con las imágenes descargadas, `avatar3` es un hombre y `avatar5` una mujer;
+  por eso Silvia Montoya usa `avatar5` (en `Lab07`, Theobaldo Diaz usa `avatar3`; en `Lab07B`, Elliot Garamendi usa `avatar3`).
 - **Nombre de docente.** En `Lab07B` se quitó el espacio sobrante de `"Silvia Montoya "` del enunciado.
