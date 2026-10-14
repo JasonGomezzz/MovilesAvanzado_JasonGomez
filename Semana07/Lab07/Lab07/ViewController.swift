@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda")!
         cell.textLabel?.text = listaProfesores[indexPath.row].nombre
         cell.detailTextLabel?.text = String(listaProfesores[indexPath.row].cargo)
-        cell.imageView?.image = listaProfesores[indexPath.row].foto!
+        cell.imageView?.image = listaProfesores[indexPath.row].foto
         return cell
     }
 
