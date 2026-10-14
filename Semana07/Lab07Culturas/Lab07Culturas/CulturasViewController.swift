@@ -42,4 +42,14 @@ class CulturasViewController: UIViewController, UITableViewDataSource {
         celda.configurar(con: culturas[indexPath.row])
         return celda
     }
+
+    // El segue "verCultura" sale de la celda: el sender es la celda tocada, y de ella se
+    // obtiene la fila, que es la posición de la cultura en el arreglo `culturas`.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "verCultura",
+              let destino = segue.destination as? DetalleCulturaViewController,
+              let celda = sender as? UITableViewCell,
+              let indexPath = tableView.indexPath(for: celda) else { return }
+        destino.cultura = culturas[indexPath.row]
+    }
 }
