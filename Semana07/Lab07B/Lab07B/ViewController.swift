@@ -11,7 +11,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // Arreglos paralelos: el nombre y la imagen de cada persona comparten el mismo índice
     var personasArreglo = ["Jaime Gomez", "Juan León", "Silvia Montoya", "Theo Diaz", "Elliot Garamendi"]
-    var personasImagenarreglo = ["avatar1", "avatar2", "avatar3", "avatar4", "avatar5"]
+    var personasImagenarreglo = ["avatar1", "avatar2", "avatar5", "avatar4", "avatar3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
