@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="113" width="393" height="739"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier=" " textLabel="CWC-Lh-wGb" detailTextLabel="vbs-nX-3HB" style="IBUITableViewCellStyleSubtitle" id="AO6-bp-BI7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="CWC-Lh-wGb" detailTextLabel="vbs-nX-3HB" style="IBUITableViewCellStyleSubtitle" id="AO6-bp-BI7">
                                         <rect key="frame" x="0.0" y="50" width="393" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AO6-bp-BI7" id="QlX-Ir-Fa4">
