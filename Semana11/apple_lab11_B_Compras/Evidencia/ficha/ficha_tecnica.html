@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ficha técnica · Lab 11 · Caso B · Compras</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  :root { --marca:#0a7a62; --marca-claro:#e3f3ee; --tinta:#17201e; --suave:#5c6a66; --linea:#d9e2df; --ambar:#b36b00; --rojo:#c62b33; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; color: var(--tinta); font-size: 10.2pt; line-height: 1.5; margin: 0; }
+  h1,h2,h3 { font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; letter-spacing: -0.01em; margin: 0; }
+  h2 { font-size: 15pt; margin: 22px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--marca); color: var(--marca); }
+  h3 { font-size: 11pt; margin: 14px 0 4px; }
+  p { margin: 5px 0; }
+  .portada { page-break-after: always; min-height: 255mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .portada .cab { display: flex; align-items: center; gap: 16px; padding-top: 30mm; }
+  .portada img.logo { width: 92px; height: 92px; border-radius: 21px; }
+  .portada h1 { font-size: 30pt; line-height: 1.05; }
+  .portada .sub { color: var(--suave); font-size: 12pt; margin-top: 6px; }
+  .tabla-datos { width: 100%; border-collapse: collapse; margin-top: 14mm; }
+  .tabla-datos td { padding: 8px 10px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  .tabla-datos td:first-child { width: 38%; color: var(--suave); font-size: 9.2pt; text-transform: uppercase; letter-spacing: .06em; }
+  .pie-portada { color: var(--suave); font-size: 9pt; border-top: 1px solid var(--linea); padding-top: 8px; }
+  table.t { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.4pt; }
+  table.t th { text-align: left; background: var(--marca-claro); color: var(--marca); padding: 6px 8px; font-weight: 600; }
+  table.t td { padding: 6px 8px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  code { font-family: "SF Mono", Menlo, monospace; font-size: 8.8pt; background: #f1f5f4; padding: 1px 4px; border-radius: 3px; }
+  .caja { background: var(--marca-claro); border-left: 4px solid var(--marca); padding: 8px 12px; border-radius: 4px; margin: 8px 0; }
+  .ok { color: var(--marca); font-weight: 700; }
+  .pend { color: var(--ambar); font-weight: 700; }
+  .galeria { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0; }
+  .galeria figure { margin: 0; width: calc(25% - 8px); page-break-inside: avoid; }
+  .galeria.tres figure { width: calc(33.33% - 7px); }
+  .galeria img { width: 100%; border: 1px solid var(--linea); border-radius: 9px; display: block; }
+  .galeria figcaption { font-size: 8pt; color: var(--suave); margin-top: 3px; line-height: 1.3; }
+  .caso { page-break-inside: avoid; border: 1px solid var(--linea); border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
+  .caso h3 { margin: 0 0 3px; }
+  .caso .res { font-size: 9.4pt; }
+  .firma { margin-top: 10mm; display: flex; gap: 12mm; }
+  .firma div { flex: 1; border-top: 1px solid var(--tinta); padding-top: 4px; font-size: 9pt; color: var(--suave); }
+  ul { margin: 4px 0 4px 18px; padding: 0; }
+  li { margin: 2px 0; }
+  .salto { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<section class="portada">
+  <div>
+    <div class="cab">
+      <img class="logo" src="../../apple_lab11_B_Compras/Assets.xcassets/AppIcon.appiconset/icono_compras_1024.png" alt="Ícono de Compras">
+      <div>
+        <h1>Compras Tecsup</h1>
+        <div class="sub">Ficha técnica · Laboratorio 11 · Caso B</div>
+      </div>
+    </div>
+    <table class="tabla-datos">
+      <tr><td>Curso</td><td>Desarrollo de Aplicaciones Móviles Avanzado</td></tr>
+      <tr><td>Laboratorio</td><td>GLAB-S11 · Persistencia de datos (SwiftUI con SwiftData)</td></tr>
+      <tr><td>Caso</td><td>B · Compras con roles de Comprador y Supervisor</td></tr>
+      <tr><td>Alumno</td><td>Jason Gómez</td></tr>
+      <tr><td>Modalidad</td><td>Trabajo individual</td></tr>
+      <tr><td>Rama del repositorio</td><td><code>ai-assisted</code> (con <code>PROMPTS.md</code>) y <code>manual</code></td></tr>
+      <tr><td>Repositorio</td><td>github.com/JasonGomezzz/MovilesAvanzado_JasonGomez · carpeta <code>Semana11/apple_lab11_B_Compras</code></td></tr>
+      <tr><td>Herramientas</td><td>Xcode 27.2 · Swift · SwiftUI · SwiftData · Swift Charts · iPhone 18 Pro (simulador)</td></tr>
+      <tr><td>Valor agregado</td><td>Resumen con tres gráficos de Swift Charts, vista previa del efecto antes de aprobar y tema visual propio</td></tr>
+    </table>
+  </div>
+  <div class="pie-portada">Documento generado para la entrega del Laboratorio 11. Las capturas provienen de la app ejecutándose en el simulador; las reglas de negocio además se comprueban con un verificador automático incluido en el repositorio (carpeta <code>Verificacion</code>).</div>
+</section>
+
+<h2>1. Objetivo</h2>
+<p>Construir una app de compras para una empresa que vende tecnología: el <b>comprador</b> registra compras a proveedores y el <b>supervisor</b> las aprueba, rechaza o paga. Todo se guarda con <b>SwiftData</b> en un archivo SQLite, de modo que los datos permanecen al cerrar la app. La app tiene inicio de sesión, registro, dos roles con pestañas distintas y reglas de negocio que cambian el inventario y las cuentas por pagar.</p>
+
+<h2>2. Modelo de datos</h2>
+<table class="t">
+  <tr><th>Clase <code>@Model</code></th><th>Atributos</th><th>Relaciones</th></tr>
+  <tr><td><b>Usuario</b></td><td>nombre, usuario (único, en minúsculas), clave, rol</td><td>compras (uno a muchos) · regla <code>.deny</code></td></tr>
+  <tr><td><b>Proveedor</b></td><td>nombre, ruc (11 dígitos)</td><td>compras (uno a muchos) · regla <code>.deny</code></td></tr>
+  <tr><td><b>Producto</b></td><td>nombre, categoría, stock, costoPromedio</td><td>compras (uno a muchos) · regla <code>.deny</code></td></tr>
+  <tr><td><b>Compra</b></td><td>fecha, cantidad, costoUnitario, igv, total, alCredito, vence, estado, pagada, motivoRechazo</td><td>comprador, proveedor, producto (inversas)</td></tr>
+</table>
+<p>La regla <code>.deny</code> impide borrar un usuario, proveedor o producto que ya tiene compras: la app lo avisa con una alerta. Los valores calculados (total comprado y compras por pagar de un proveedor, valor del inventario de un producto) no se guardan; se derivan de las relaciones.</p>
+
+<h2>3. Roles y pestañas</h2>
+<table class="t">
+  <tr><th>Rol</th><th>Pestañas</th><th>Permisos</th></tr>
+  <tr><td><b>Comprador</b></td><td>Productos · Proveedores · Compra · Mis compras</td><td>Consulta y busca en el catálogo, registra compras y ve <u>solo las suyas</u>. No aprueba ni paga.</td></tr>
+  <tr><td><b>Supervisor</b></td><td>Resumen · Aprobar · Por pagar · Productos · Proveedores</td><td>Crea, edita y borra productos y proveedores; aprueba, rechaza y paga compras; ve el resumen del negocio.</td></tr>
+</table>
+<p>La cuenta de cada persona es un menú en el avatar de la barra superior: muestra nombre y rol, permite cerrar sesión y, al supervisor, cargar un historial de ejemplo. Los permisos se validan también en la lógica (<code>ReglasCompra</code>), no solo ocultando botones.</p>
+
+<h2>4. Reglas de negocio</h2>
+<table class="t">
+  <tr><th>Regla</th><th>Detalle</th></tr>
+  <tr><td>Usuario único</td><td>Se normaliza (minúsculas y sin espacios), así «MTorres» y «mtorres» son el mismo. Clave mínima de 6 caracteres y confirmación igual.</td></tr>
+  <tr><td>Login genérico</td><td>Si algo falla, siempre dice «Usuario o clave incorrectos»; nunca revela cuál de los dos falló.</td></tr>
+  <tr><td>Cálculo de la compra</td><td>subtotal = cantidad × costo unitario · IGV = 18 % del subtotal · total = subtotal + IGV, todo redondeado a céntimos.</td></tr>
+  <tr><td>Aprobación</td><td>Total menor a S/ 5,000: queda <b>Aprobada</b> al instante. Total de S/ 5,000 o más: queda <b>Pendiente</b> y no cambia stock ni costo hasta que el supervisor la apruebe.</td></tr>
+  <tr><td>Costo promedio ponderado</td><td>nuevo = (stock × costo promedio + cantidad × costo unitario) ÷ (stock + cantidad). El stock aumenta en la cantidad comprada.</td></tr>
+  <tr><td>Crédito a 30 días</td><td>La fecha de vencimiento es la fecha de la compra + 30 días. Queda «por pagar» hasta que el supervisor la paga. Al contado se marca pagada en el momento.</td></tr>
+  <tr><td>Rechazo</td><td>El motivo es obligatorio; el comprador lo ve en «Mis compras». No cambia stock ni costo.</td></tr>
+  <tr><td>Vencida</td><td>Compra aprobada a crédito, sin pagar, cuya fecha de vencimiento ya pasó: se marca con la insignia VENCIDA.</td></tr>
+  <tr><td>Crédito fiscal</td><td>Suma del IGV de las compras aprobadas (cifra del Resumen).</td></tr>
+</table>
+
+<h2 class="salto">5. Pantallas (B1 a B9)</h2>
+<p>Todas las pantallas del enunciado están implementadas. La imagen del ícono y el logo se tomaron del propio enunciado, como indicó el profesor.</p>
+<div class="galeria">
+  <figure><img src="../capturas/B1_login.png"><figcaption><b>B1</b> Login con el ícono del enunciado</figcaption></figure>
+  <figure><img src="../capturas/B2_registro_comprador.png"><figcaption><b>B2</b> Registro con «Disponible» en vivo y rol</figcaption></figure>
+  <figure><img src="../capturas/B3_productos_comprador.png"><figcaption><b>B3</b> Productos: stock con color y valor del inventario</figcaption></figure>
+  <figure><img src="../capturas/B4_proveedores.png"><figcaption><b>B4</b> Proveedores: comprado y por pagar calculados</figcaption></figure>
+  <figure><img src="../capturas/B5_caso3_compra_credito.png"><figcaption><b>B5</b> Nueva compra con resumen calculado</figcaption></figure>
+  <figure><img src="../capturas/B6_mis_compras.png"><figcaption><b>B6</b> Mis compras: solo las del comprador</figcaption></figure>
+  <figure><img src="../capturas/B7_caso5_pendiente_de_aprobar.png"><figcaption><b>B7</b> Aprobar: vista previa del efecto</figcaption></figure>
+  <figure><img src="../capturas/B8_caso8_vencida.png"><figcaption><b>B8</b> Por pagar con la insignia VENCIDA</figcaption></figure>
+</div>
+<div class="galeria tres">
+  <figure><img src="../capturas/B9_resumen_graficos_1.png"><figcaption><b>B9</b> Resumen del supervisor: cifras y gráfico mensual</figcaption></figure>
+  <figure><img src="../capturas/B9_resumen_graficos_2.png"><figcaption><b>B9</b> Gráficos por proveedor y por categoría</figcaption></figure>
+  <figure><img src="../capturas/B3_productos_supervisor.png"><figcaption>El supervisor ve el botón + para crear productos</figcaption></figure>
+</div>
+
+<h2 class="salto">6. Casos de prueba</h2>
+<p>Cada caso se ejecutó en el simulador y, además, se comprueba con el verificador automático (<code>Verificacion/ejecutar.sh</code>), que usa las mismas clases de la app con una base en memoria. <b>Resultado del verificador: 11 de 11 casos aprobados</b> (los 9 del enunciado más 2 adicionales).</p>
+
+<div class="caso"><h3>Caso 1 · Usuario único <span class="ok">✓</span></h3>
+<div class="res">Se registra «mtorres» como Comprador; al intentar repetirlo (incluso como «MTorres») la app muestra <b>Ya existe</b> y no lo permite. Solo queda un «mtorres» en la base.</div></div>
+
+<div class="caso"><h3>Caso 2 · Login con clave incorrecta <span class="ok">✓</span></h3>
+<div class="res">El login responde «Usuario o clave incorrectos» sin indicar cuál falló. Una clave de 4 caracteres o dos claves distintas impiden crear la cuenta.</div></div>
+
+<div class="caso"><h3>Caso 3 · Compra a crédito de 10 unidades a S/ 120.00 <span class="ok">✓</span></h3>
+<div class="res">Producto con stock 40 y costo promedio S/ 110.00. Subtotal <b>1,200.00</b> · IGV <b>216.00</b> · total <b>1,416.00</b> · queda Aprobada · stock <b>40 → 50</b> · costo promedio <b>110.00 → 112.00</b> · vence el 17/12/2026 (30 días) · queda por pagar.</div>
+<div class="galeria tres"><figure><img src="../capturas/B5_caso3_resultado.png"><figcaption>Resultado mostrado en la app</figcaption></figure></div></div>
+
+<div class="caso"><h3>Caso 4 · La misma compra al contado <span class="ok">✓</span></h3>
+<div class="res">Queda pagada, no tiene fecha de vencimiento y no aparece en «Por pagar». (Comprobado con el verificador; en el simulador se probó el crédito, que es el camino que sí genera deuda.)</div></div>
+
+<div class="caso"><h3>Caso 5 · Compra de 50 a S/ 120.00 (total 7,080.00) <span class="ok">✓</span></h3>
+<div class="res">El formulario avisa que supera S/ 5,000 y el botón pasa a «Enviar a aprobación». La compra queda <b>Pendiente</b>: el stock y el costo promedio no cambian ni suma a «por pagar».</div>
+<div class="galeria"><figure><img src="../capturas/B5_caso5_requiere_aprobacion.png"><figcaption>Aviso antes de enviar</figcaption></figure><figure><img src="../capturas/B5_caso5_resultado.png"><figcaption>Enviada a aprobación</figcaption></figure></div></div>
+
+<div class="caso"><h3>Caso 6 · El supervisor aprueba la compra del caso 5 <span class="ok">✓</span></h3>
+<div class="res">La pantalla muestra primero el efecto («Si apruebas: stock 50 → 100, costo promedio S/ 112.00 → S/ 116.00»). Al aprobar, el stock y el costo cambian y la compra pasa a «Por pagar». <b>Nota:</b> en el simulador los casos se ejecutaron encadenados (el caso 3 ya había subido el stock a 50), por eso la cifra es 100 y 116.00. Sobre una base limpia (stock 40) la misma fórmula da <b>90 y 115.56</b>, valor que verifica el script. Un comprador no puede aprobar.</div>
+<div class="galeria"><figure><img src="../capturas/B7_caso5_pendiente_de_aprobar.png"><figcaption>Vista previa</figcaption></figure><figure><img src="../capturas/B7_caso6_aprobada.png"><figcaption>Compra resuelta</figcaption></figure><figure><img src="../capturas/B8_por_pagar.png"><figcaption>Ya en «Por pagar»</figcaption></figure></div></div>
+
+<div class="caso"><h3>Caso 7 · Rechazar con motivo obligatorio <span class="ok">✓</span></h3>
+<div class="res">El botón «Rechazar compra» permanece apagado mientras el motivo esté vacío. Con motivo, la compra queda Rechazada, el comprador lo ve en «Mis compras» y el stock no cambia.</div>
+<div class="galeria tres"><figure><img src="../capturas/B7_caso7_motivo_obligatorio.png"><figcaption>Hoja de rechazo con el botón apagado</figcaption></figure></div></div>
+
+<div class="caso"><h3>Caso 8 · Crédito vencido y pago <span class="ok">✓</span></h3>
+<div class="res">Una compra a crédito con vencimiento pasado se muestra con la insignia <b>VENCIDA</b>. Al deslizar y pulsar «Pagar», pasa a «Pagadas» y el total por pagar baja exactamente su importe (S/ 21,930.30 → S/ 17,965.50 con la compra de S/ 3,964.80). Un comprador no puede pagar.</div>
+<div class="galeria"><figure><img src="../capturas/B8_caso8_vencida.png"><figcaption>VENCIDA</figcaption></figure><figure><img src="../capturas/B8_deslizar_para_pagar.png"><figcaption>Deslizar para pagar</figcaption></figure><figure><img src="../capturas/B8_caso8_tras_pagar.png"><figcaption>Total por pagar actualizado</figcaption></figure><figure><img src="../capturas/B8_pagadas.png"><figcaption>Segmento Pagadas</figcaption></figure></div></div>
+
+<div class="caso"><h3>Caso 9 · El comprador solo ve lo suyo <span class="ok">✓</span></h3>
+<div class="res">«Mis compras» filtra con <code>#Predicate</code> por el usuario de la sesión, por lo que nunca aparecen compras de otra persona. Pagar o aprobar está prohibido para el comprador en la lógica.</div>
+<div class="galeria tres"><figure><img src="../capturas/B6_mis_compras.png"><figcaption>Compras de «mtorres»</figcaption></figure></div></div>
+
+<div class="caso"><h3>Casos extra · Borrado protegido y crédito fiscal <span class="ok">✓</span></h3>
+<div class="res">Un producto, proveedor o usuario con compras no se puede borrar (regla <code>.deny</code>); uno sin compras sí. El crédito fiscal del Resumen es la suma del IGV de las compras aprobadas.</div></div>
+
+<h2 class="salto">7. Valor agregado (lo que diferencia este trabajo)</h2>
+<ul>
+  <li><b>Resumen con Swift Charts:</b> compras por mes (últimos seis meses, el mes actual resaltado), total comprado por proveedor y gasto por categoría en gráfico de anillo, además de cuatro cifras clave (inventario, crédito fiscal, por pagar y por aprobar).</li>
+  <li><b>Vista previa del efecto:</b> antes de aprobar, el supervisor ve cómo cambiarán el stock y el costo promedio.</li>
+  <li><b>Identidad visual propia:</b> paleta tomada del ícono del enunciado (verde azulado y ámbar), avatares con iniciales de color estable, estados con color y texto (no solo color), modo claro y oscuro, retroalimentación háptica y respuesta inmediata al toque.</li>
+  <li><b>Historial de ejemplo:</b> el supervisor puede cargar 11 compras de los últimos seis meses, creadas con las mismas reglas de la app, para ver los gráficos con datos.</li>
+  <li><b>Verificador automático:</b> un script ejecuta los 9 casos del enunciado y 2 extras contra las clases reales de la app.</li>
+</ul>
+
+<h2>8. Estructura del proyecto</h2>
+<table class="t">
+  <tr><th>Carpeta</th><th>Contenido</th></tr>
+  <tr><td><code>Modelos/</code></td><td>Usuario, Proveedor, Producto, Compra</td></tr>
+  <tr><td><code>Servicios/</code></td><td>ReglasCompra (negocio), Autenticacion, Sesion, Formato, ModelContainerProvider, DatosDemo</td></tr>
+  <tr><td><code>Tema/</code></td><td>Colores, avatares, insignias, botones y tarjetas</td></tr>
+  <tr><td><code>Vistas/</code></td><td>Acceso (B1, B2), Catalogo (B3, B4), Compras (B5, B6), Supervisor (B7, B8, B9), Comun, RaizView</td></tr>
+  <tr><td><code>Verificacion/</code></td><td>Verificador de los casos de prueba</td></tr>
+  <tr><td><code>Evidencia/</code></td><td>Capturas y esta ficha</td></tr>
+</table>
+
+<h2>9. Plan de commits (rama <code>ai-assisted</code>)</h2>
+<p>El historial sigue Conventional Commits en español, de abajo hacia arriba: proyecto, recursos, datos, lógica, interfaz, navegación, pruebas y documentación.</p>
+<table class="t">
+  <tr><th>#</th><th>Commit</th></tr>
+  <tr><td>1</td><td><code>chore(project)</code> crear proyecto SwiftUI con SwiftData para el caso B de compras</td></tr>
+  <tr><td>2</td><td><code>feat(assets)</code> agregar el ícono y el logo de Compras tomados del enunciado</td></tr>
+  <tr><td>3</td><td><code>feat(models)</code> definir Usuario, Proveedor, Producto y Compra con relaciones inversas y regla deny</td></tr>
+  <tr><td>4–6</td><td><code>feat(services)</code> reglas de compra, registro y login, formato y contenedor SwiftData, datos de ejemplo</td></tr>
+  <tr><td>7–15</td><td><code>feat(views)</code> tema, login y registro (B1, B2), productos (B3), proveedores (B4), compra (B5), mis compras (B6), aprobar (B7), por pagar (B8), resumen (B9)</td></tr>
+  <tr><td>16</td><td><code>feat(navigation)</code> mostrar login o pestañas según la sesión y el rol</td></tr>
+  <tr><td>17</td><td><code>test(services)</code> verificar los nueve casos de prueba y las reglas deny sin simulador</td></tr>
+  <tr><td>18</td><td><code>docs</code> evidencias, ficha técnica y registro de prompts</td></tr>
+</table>
+
+<h2>10. Cómo probarla</h2>
+<ol>
+  <li>Abrir <code>apple_lab11_B_Compras.xcodeproj</code> en Xcode y ejecutar en un iPhone del simulador.</li>
+  <li>Crear una cuenta de <b>Supervisor</b> y otra de <b>Comprador</b> desde «Crear cuenta» (no hay usuarios precargados; el catálogo de 4 productos y 3 proveedores sí se carga la primera vez).</li>
+  <li>Como comprador, registrar compras; como supervisor, aprobarlas y pagarlas. Opcional: menú del avatar ▸ «Cargar historial de ejemplo».</li>
+  <li>Para repetir los casos desde cero, borrar la app del simulador (reinicia la base de datos).</li>
+</ol>
+
+<h2>11. Visto bueno del docente</h2>
+<div class="caja">Expediente pendiente de revisión. Fecha y firma en blanco para que el docente las complete.</div>
+<div class="firma"><div>Fecha</div><div>Nombre del docente</div><div>Firma</div></div>
+
+</body>
+</html>
