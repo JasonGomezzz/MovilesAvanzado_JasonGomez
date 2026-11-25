@@ -39,6 +39,8 @@ check("N07", "más de 60 caracteres", UserValidator.nameError(String(repeating: 
 check("N08", "nombre con tilde y ñ 'José Peña'", UserValidator.nameError("José Peña"), expectsError: false)
 check("N09", "nombre de la API con prefijo 'Mrs. Dennis Schulist'", UserValidator.nameError("Mrs. Dennis Schulist"), expectsError: false)
 check("N10", "nombre de la API con inicial 'Nicholas Runolfsdottir V'", UserValidator.nameError("Nicholas Runolfsdottir V"), expectsError: false)
+check("N11", "punto en medio 'Ana torres.gomez'", UserValidator.nameError("Ana torres.gomez"), expectsError: true, contains: "no parece")
+check("N12", "apellido compuesto 'Lucía Ruiz-Díaz'", UserValidator.nameError("Lucía Ruiz-Díaz"), expectsError: false)
 
 print("== Correo ==")
 check("E01", "vacío", UserValidator.emailError("", others: existing), expectsError: true, contains: "Escribe el correo")
