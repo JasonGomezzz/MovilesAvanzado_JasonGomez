@@ -4,9 +4,6 @@ App de compras en **SwiftUI + SwiftData** con inicio de sesión y dos roles:
 el **comprador** registra compras y el **supervisor** las aprueba, rechaza o paga.
 Esta es la versión simple de la rama `manual`, escrita al estilo de la Actividad 02.
 
-La ficha técnica completa (modelo, permisos, reglas con ejemplos, casos de prueba con capturas) está en
-[`Evidencia/Ficha_Tecnica_Lab11_CasoB_JasonGomez.pdf`](Evidencia/Ficha_Tecnica_Lab11_CasoB_JasonGomez.pdf).
-
 ## Cómo ejecutarla
 
 1. Abrir `apple_lab11_B_Compras.xcodeproj` en Xcode.
@@ -59,6 +56,5 @@ apple_lab11_B_Compras/
 ├── ModelContainerProvider   Contenedor SwiftData (singleton)
 ├── DatosIniciales.swift     Catálogo inicial y compras de ejemplo
 ├── ContentView.swift        Login o pestañas según el rol
-├── Verificacion/            Verificador de casos de prueba
-└── Evidencia/               Capturas y ficha técnica
+└── Verificacion/            Verificador de casos de prueba
 ```
