@@ -61,16 +61,12 @@ nonisolated enum UserValidator {
             return "Usa solo letras: sin números ni símbolos."
         }
 
-        let words = name.split(separator: " ")
+        // Se revisa palabra por palabra tal como la escribió (sin la mayúscula automática)
+        let words = raw.split(whereSeparator: \.isWhitespace)
             .map { String($0) }
             .filter { !honorifics.contains($0.lowercased()) }
-        // Se aceptan iniciales sueltas ("Nicholas Runolfsdottir V"), pero debe haber
-        // al menos un nombre y un apellido de 2 letras o más.
-        let realWords = words.filter { lettersOnly($0).count >= 2 }
-        if realWords.count < 2 {
-            return "Escribe nombre y apellido."
-        }
 
+        // Primero el texto de relleno, para que "xxx" diga por qué no sirve
         for word in words {
             let letters = lettersOnly(word).lowercased()
             if fillerWords.contains(letters) {
@@ -82,6 +78,13 @@ nonisolated enum UserValidator {
             if letters.count >= 3 && !letters.contains(where: { "aeiouáéíóúüy".contains($0) }) {
                 return "“\(word)” no parece un nombre."
             }
+        }
+
+        // Se aceptan iniciales sueltas ("Nicholas Runolfsdottir V"), pero debe haber
+        // al menos un nombre y un apellido de 2 letras o más.
+        let realWords = words.filter { lettersOnly($0).count >= 2 }
+        if realWords.count < 2 {
+            return "Escribe nombre y apellido."
         }
         return nil
     }

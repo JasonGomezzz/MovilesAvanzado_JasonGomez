@@ -30,7 +30,7 @@ let existing = [
 
 print("== Nombre ==")
 check("N01", "vacío o solo espacios", UserValidator.nameError("   "), expectsError: true, contains: "Escribe el nombre")
-check("N02", "texto de relleno 'xxx xxx'", UserValidator.nameError("xxx xxx"), expectsError: true, contains: "no es un nombre real")
+check("N02", "texto de relleno 'xxx'", UserValidator.nameError("xxx"), expectsError: true, contains: "no es un nombre real")
 check("N03", "una sola palabra 'Jason'", UserValidator.nameError("Jason"), expectsError: true, contains: "nombre y apellido")
 check("N04", "con números 'Juan123 Pérez'", UserValidator.nameError("Juan123 Pérez"), expectsError: true, contains: "solo letras")
 check("N05", "letra repetida 'Juaaan Pérez'", UserValidator.nameError("Juaaan Pérez"), expectsError: true, contains: "relleno")
