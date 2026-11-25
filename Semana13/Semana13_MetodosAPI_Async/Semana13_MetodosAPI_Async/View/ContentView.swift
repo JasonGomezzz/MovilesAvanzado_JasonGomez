@@ -18,7 +18,7 @@ struct ContentView: View {
         NavigationStack {
             content
                 .navigationTitle("Usuarios")
-                .navigationSubtitle("GET · POST · PUT · DELETE")
+                .navigationSubtitle("async / await")
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button {
@@ -31,18 +31,20 @@ struct ContentView: View {
                     }
                 }
         }
-        .onAppear {
+        // .task crea un Task al aparecer la vista y lo cancela si la vista desaparece
+        .task {
             if viewModel.users.isEmpty {
-                viewModel.fetchUsers()
+                await viewModel.fetchUsers()
             }
         }
         .sheet(isPresented: $showingForm) {
-            UserFormView(user: editingUser, existingUsers: viewModel.users, isSending: viewModel.isSending) { name, email in
+            // El formulario espera (await) la respuesta antes de cerrarse
+            UserFormView(user: editingUser, existingUsers: viewModel.users) { name, email in
                 if let user = editingUser {
                     let updated = User(id: user.id, name: name, email: email)
-                    viewModel.updateUser(user: updated)
+                    return await viewModel.updateUser(user: updated)
                 } else {
-                    viewModel.createUser(name: name, email: email)
+                    return await viewModel.createUser(name: name, email: email)
                 }
             }
         }
@@ -53,7 +55,9 @@ struct ContentView: View {
             presenting: userToDelete
         ) { user in
             Button("Eliminar", role: .destructive) {
-                viewModel.deleteUser(id: user.id)
+                Task {
+                    await viewModel.deleteUser(id: user.id)
+                }
             }
         } message: { _ in
             Text("Se enviará DELETE a la API y se quitará de la lista.")
@@ -81,7 +85,9 @@ struct ContentView: View {
             } description: {
                 Text(message)
             } actions: {
-                Button("Reintentar") { viewModel.fetchUsers() }
+                Button("Reintentar") {
+                    Task { await viewModel.fetchUsers() }
+                }
                     .buttonStyle(.borderedProminent)
             }
 
@@ -130,7 +136,7 @@ struct ContentView: View {
             }
         }
         .disabled(viewModel.isSending)
-        .refreshable { viewModel.fetchUsers() }
+        .refreshable { await viewModel.fetchUsers() } // el indicador se queda hasta que termina la petición
         .searchable(text: $viewModel.searchText, prompt: "Buscar por nombre o correo")
         .autocorrectionDisabled()
         .textInputAutocapitalization(.never)

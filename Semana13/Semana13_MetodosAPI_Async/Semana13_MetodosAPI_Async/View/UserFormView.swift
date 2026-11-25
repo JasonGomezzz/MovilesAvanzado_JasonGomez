@@ -14,23 +14,24 @@ struct UserFormView: View {
     @State private var name: String
     @State private var email: String
     @FocusState private var focusedField: Field?
+    @State private var isSaving = false
+    @State private var serverError: String?
 
     private let original: User?
     private let otherUsers: [User]
-    private let isSending: Bool
-    private let onSubmit: (String, String) -> Void
+    /// Devuelve nil si la API respondió bien, o el mensaje de error.
+    private let onSubmit: (String, String) async -> String?
 
     private enum Field { case name, email }
 
     /// - Parameters:
     ///   - user: el usuario a editar, o nil para crear uno nuevo.
     ///   - existingUsers: la lista actual, para no repetir correos.
-    init(user: User?, existingUsers: [User], isSending: Bool, onSubmit: @escaping (String, String) -> Void) {
+    init(user: User?, existingUsers: [User], onSubmit: @escaping (String, String) async -> String?) {
         _name = State(initialValue: user?.name ?? "")
         _email = State(initialValue: user?.email ?? "")
         original = user
         otherUsers = existingUsers.filter { $0.id != user?.id }
-        self.isSending = isSending
         self.onSubmit = onSubmit
     }
 
@@ -47,7 +48,7 @@ struct UserFormView: View {
     }
 
     private var canSave: Bool {
-        nameError == nil && emailError == nil && hasChanges && !isSending
+        nameError == nil && emailError == nil && hasChanges && !isSaving
     }
 
     var body: some View {
@@ -95,20 +96,34 @@ struct UserFormView: View {
                 } footer: {
                     Text(footerText)
                 }
+
+                // Si la API falla, el formulario no se cierra y no se pierde lo escrito
+                if let serverError {
+                    Section {
+                        Label(serverError, systemImage: "wifi.exclamationmark")
+                            .foregroundStyle(.red)
+                    }
+                }
             }
             .navigationTitle(isEditing ? "Editar usuario" : "Nuevo usuario")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar", role: .cancel) { dismiss() }
+                        .disabled(isSaving)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(isEditing ? "Guardar" : "Crear", action: save)
-                        .disabled(!canSave)
+                    if isSaving {
+                        ProgressView()
+                    } else {
+                        Button(isEditing ? "Guardar" : "Crear", action: save)
+                            .disabled(!canSave)
+                    }
                 }
             }
+            .disabled(isSaving)
             // Si ya escribió algo, no se cierra por accidente al deslizar hacia abajo
-            .interactiveDismissDisabled(hasChanges)
+            .interactiveDismissDisabled(hasChanges || isSaving)
             .onAppear { focusedField = isEditing ? nil : .name }
         }
     }
@@ -122,8 +137,18 @@ struct UserFormView: View {
 
     private func save() {
         guard canSave else { return }
-        onSubmit(cleanName, cleanEmail)
-        dismiss()
+        // Task permite llamar a la función async desde el botón, que es código síncrono
+        Task {
+            isSaving = true
+            serverError = nil
+            let error = await onSubmit(cleanName, cleanEmail)
+            isSaving = false
+            if let error {
+                serverError = error
+            } else {
+                dismiss() // se cierra solo cuando la API ya respondió bien
+            }
+        }
     }
 }
 
@@ -141,10 +166,10 @@ private struct FieldError: View {
 }
 
 #Preview("Nuevo") {
-    UserFormView(user: nil, existingUsers: [], isSending: false) { _, _ in }
+    UserFormView(user: nil, existingUsers: []) { _, _ in nil }
 }
 
 #Preview("Editar") {
     UserFormView(user: User(id: 3, name: "Clementine Bauch", email: "nathan@yesenia.net"),
-                 existingUsers: [], isSending: false) { _, _ in }
+                 existingUsers: []) { _, _ in nil }
 }
