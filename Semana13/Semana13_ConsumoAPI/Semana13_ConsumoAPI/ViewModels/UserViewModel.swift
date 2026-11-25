@@ -21,6 +21,19 @@ final class UserViewModel: ObservableObject {
     // @Published avisa a la vista cada vez que cambian, para que se vuelva a dibujar
     @Published var users: [User] = []
     @Published var state: LoadState = .loading
+    @Published var searchText: String = ""           // Texto del filtro
+
+    // Propiedad calculada: devuelve solo los usuarios cuyo nombre contiene el texto buscado.
+    // localizedStandardContains ignora mayúsculas y tildes ("jose" encuentra "José").
+    var filteredUsers: [User] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        if query.isEmpty {
+            return users
+        }
+        return users.filter { user in
+            user.name.localizedStandardContains(query)
+        }
+    }
 
     private let endpoint = "https://jsonplaceholder.typicode.com/users"
 
