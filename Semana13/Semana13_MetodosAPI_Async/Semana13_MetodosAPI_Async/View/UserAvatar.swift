@@ -10,6 +10,7 @@ import SwiftUI
 /// Círculo con las iniciales. El color sale del id, así cada usuario mantiene el suyo.
 struct UserAvatar: View {
     let user: User
+    @Environment(\.colorScheme) private var colorScheme
 
     private static let palette: [Color] = [
         Color(red: 0.04, green: 0.43, blue: 0.41), // verde petróleo
@@ -21,7 +22,9 @@ struct UserAvatar: View {
     ]
 
     private var color: Color {
-        Self.palette[abs(user.id) % Self.palette.count]
+        let base = Self.palette[abs(user.id) % Self.palette.count]
+        // En modo oscuro se aclara el tono para que las iniciales se lean sobre fondo negro
+        return colorScheme == .dark ? base.mix(with: .white, by: 0.45) : base
     }
 
     var body: some View {
