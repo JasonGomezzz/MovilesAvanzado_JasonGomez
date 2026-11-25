@@ -80,10 +80,10 @@
 				};
 			};
 			buildConfigurationList = 9635FC123088F45500E8CE75 /* Build configuration list for PBXProject "Semana13_ConsumoAPI" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				es,
 				Base,
 			);
 			mainGroup = 9635FC0E3088F45500E8CE75;
