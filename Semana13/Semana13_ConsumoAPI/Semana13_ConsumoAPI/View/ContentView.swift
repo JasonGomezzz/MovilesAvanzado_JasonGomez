@@ -57,14 +57,33 @@ struct ContentView: View {
                 }
             }
             Section {
-                ForEach(viewModel.users) { user in
+                // Lista de usuarios filtrados
+                ForEach(viewModel.filteredUsers) { user in
                     UserRow(user: user)
                 }
             } header: {
-                Text("\(viewModel.users.count) usuarios registrados")
+                Text(headerText)
             }
         }
         .refreshable { viewModel.fetchUsers() }
+        // Campo de búsqueda en la barra de navegación, enlazado a searchText del ViewModel
+        .searchable(text: $viewModel.searchText, prompt: "Buscar usuario por nombre")
+        .autocorrectionDisabled()
+        .overlay {
+            if viewModel.filteredUsers.isEmpty && !viewModel.users.isEmpty {
+                ContentUnavailableView(
+                    "Nadie se llama “\(viewModel.searchText)”",
+                    systemImage: "person.crop.circle.badge.questionmark",
+                    description: Text("Revisa cómo lo escribiste o busca con otra parte del nombre.")
+                )
+            }
+        }
+    }
+
+    private var headerText: String {
+        let total = viewModel.users.count
+        let shown = viewModel.filteredUsers.count
+        return shown == total ? "\(total) usuarios registrados" : "\(shown) de \(total) usuarios"
     }
 }
 
