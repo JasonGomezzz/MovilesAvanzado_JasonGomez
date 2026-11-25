@@ -2,3 +2,10 @@
 xcuserdata/
 *.xcuserstate
 DerivedData/
+build/
+.build/
+.swiftpm/
+Pods/
+*.xcarchive
+*.ipa
+Secrets.xcconfig
