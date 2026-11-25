@@ -68,6 +68,10 @@ nonisolated enum UserValidator {
 
         // Primero el texto de relleno, para que "xxx" diga por qué no sirve
         for word in words {
+            // El punto solo al final ("Jr.") y el guion o apóstrofo entre letras ("O'Neil", "Ruiz-Díaz")
+            if word.range(of: #"^\p{L}+(['-]\p{L}+)*\.?$"#, options: .regularExpression) == nil {
+                return "“\(word)” no parece un nombre."
+            }
             let letters = lettersOnly(word).lowercased()
             if fillerWords.contains(letters) {
                 return "“\(word)” no es un nombre real."
