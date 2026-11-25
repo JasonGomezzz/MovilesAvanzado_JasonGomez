@@ -9,3 +9,13 @@ Pods/
 *.xcarchive
 *.ipa
 Secrets.xcconfig
+
+# Informes, documentos y evidencias de entrega: se quedan en la computadora
+Entrega_Lab*/
+Documentacion/
+Excel/
+*.pdf
+*.docx
+*.doc
+*.pages
+*.xlsx

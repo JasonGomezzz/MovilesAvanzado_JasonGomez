@@ -7,7 +7,6 @@ Laboratorio 13 de Programación en Móviles Avanzados. Las tres apps consumen `h
 | `Semana13_ConsumoAPI` | 01 | GET de usuarios con `dataTask` y filtro por nombre (`searchText` + `filteredUsers`) |
 | `Semana13_MetodosAPI` | 02 | GET, POST, PUT y DELETE con `dataTask`, formulario `UserFormView` validado |
 | `Semana13_MetodosAPI_Async` | 03 | Los mismos métodos con `URLSession.shared.data` y `async/await` |
-| `Entrega_Lab13` | Entrega | Informe en PDF y Word, y las capturas del simulador |
 
 ## Cómo ejecutar
 
